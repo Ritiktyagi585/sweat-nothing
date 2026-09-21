@@ -1,0 +1,25 @@
+/* This file keeps the Contact page responsive even before Vite is rebuilt. */
+.contact-form-layout,
+.contact-info-layout,
+.home-hero-layout {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .contact-form-layout {
+        grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.95fr);
+    }
+
+    .contact-info-layout {
+        grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.8fr);
+    }
+
+    .home-hero-layout {
+        grid-template-columns: minmax(22rem, 0.82fr) minmax(34rem, 1.18fr);
+    }
+
+    .home-hero-image {
+        display: block;
+    }
+}

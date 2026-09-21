@@ -1,0 +1,139 @@
+@extends('layout.app')
+
+@section('title', 'Sweat Nothing | Less sugar, more life')
+
+@section('content')
+    <main id="home" class="overflow-hidden">
+        <section class="relative isolate overflow-hidden bg-[linear-gradient(112deg,#fff9ef_0%,#fffdf9_54%,#f5eee4_100%)]">
+            <div class="home-hero-layout mx-auto grid min-h-[640px] max-w-7xl items-center gap-8 px-6 py-16 lg:grid-cols-[.82fr_1.18fr] lg:px-8 lg:py-20">
+                <div class="relative z-10 max-w-md">
+                    <p class="mb-3 text-[11px] font-bold tracking-[0.35em] text-black/70">
+                        SAME SWEETNESS<br>
+                        A HEALTHIER TOMORROW
+                    </p>
+                    <h1 class="max-w-xl text-5xl font-black leading-[0.88] tracking-[-0.07em] sm:text-7xl">
+                        Less<br>
+                        Sugar.<br>
+                        <span class="text-[#ffcf00]">More Life.</span>
+                    </h1>
+                    <p class="mt-5 max-w-sm text-base leading-6 text-black/75">
+                        Your everyday sugar alternative for chai, coffee, desserts and more.
+                    </p>
+                    <a href="#product" class="mt-7 inline-flex rounded-full bg-[#ffd100] px-7 py-4 text-sm font-bold shadow-[0_8px_24px_rgba(255,209,0,.25)] transition hover:-translate-y-1">
+                        Explore Product&nbsp; →
+                    </a>
+                    <div class="mt-10 grid max-w-md grid-cols-4 gap-4 text-center text-[10px] font-semibold leading-3">
+                        <div><span class="mb-2 block text-3xl">◯</span>Zero Added<br>Sugar</div>
+                        <div><span class="mb-2 block text-3xl">♡</span>Keto<br>Friendly</div>
+                        <div><span class="mb-2 block text-3xl">♧</span>Plant<br>Based</div>
+                        <div><span class="mb-2 block text-3xl">☺</span>Great<br>Taste</div>
+                    </div>
+                </div>
+
+                <div class="home-hero-image relative hidden h-[440px] overflow-hidden rounded-3xl shadow-xl lg:block">
+                    <img
+                        src="{{ asset('images/home-banner.png') }}"
+                        alt="Sweat Nothing natural sweetener with a cup of chai"
+                        class="h-full w-full object-cover"
+                        style="object-position: 72% center"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <section id="product" class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+            <div class="mb-8 text-center">
+                <p class="text-[10px] font-bold tracking-[0.3em]">SWEET MOMENTS, NEW POSSIBILITIES</p>
+                <h2 class="mt-2 text-3xl font-black tracking-[-0.05em] sm:text-4xl">Made for What You Love</h2>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <article class="group">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=700&q=85" alt="Chai with Sweat Nothing">
+                    <div class="mt-3 flex items-end justify-between gap-3">
+                        <div><h3 class="font-bold">Chai</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Same comfort. Just better.</p></div>
+                        <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
+                    </div>
+                </article>
+                <article class="group">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85" alt="Coffee with Sweat Nothing">
+                    <div class="mt-3 flex items-end justify-between gap-3">
+                        <div><h3 class="font-bold">Coffee</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">All the flavour. None of the sugar.</p></div>
+                        <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
+                    </div>
+                </article>
+                <article class="group">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=85" alt="Desserts with Sweat Nothing">
+                    <div class="mt-3 flex items-end justify-between gap-3">
+                        <div><h3 class="font-bold">Desserts</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Sweet moments, guilt-free.</p></div>
+                        <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
+                    </div>
+                </article>
+                <article class="group">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=700&q=85" alt="Baking with Sweat Nothing">
+                    <div class="mt-3 flex items-end justify-between gap-3">
+                        <div><h3 class="font-bold">Baking</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Because healthy can be delicious.</p></div>
+                        <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="story" class="mx-auto grid max-w-7xl items-center gap-10 px-6 py-14 lg:grid-cols-2 lg:px-8">
+            <div>
+                <h2 class="max-w-md text-4xl font-black leading-[.95] tracking-[-.06em] sm:text-5xl">A Small Swap<br>A Bigger Tomorrow</h2>
+                <p class="mt-5 max-w-md leading-6 text-black/75">
+                    At Sweat Nothing, we believe you don't have to choose between great taste and good health.
+                    Our sweetness brings a little more joy to your everyday moments — without the sugar.
+                </p>
+                <a href="#contact" class="mt-6 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold">Our Story →</a>
+            </div>
+            <div class="relative overflow-hidden rounded-[3rem] bg-[#ffe792] p-10">
+                <p class="relative z-10 font-serif text-3xl italic">Healthier<br>Happier<br>You ♡</p>
+                <img class="absolute -bottom-16 right-0 h-80 w-2/3 object-cover object-left opacity-90 mix-blend-multiply" src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=85" alt="A spoon full of white sugar alternative">
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
+            <div class="rounded-3xl bg-[#f7f3ec] px-6 py-12 text-center">
+                <p class="text-[10px] font-bold tracking-[.28em]">A HEALTHIER CHOICE FOR A BRIGHTER YOU</p>
+                <h2 class="mt-2 text-3xl font-black tracking-[-.05em]">Why Choose Sweat Nothing?</h2>
+                <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <div>
+                        <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#ffe28a] text-2xl">◯</span>
+                        <h3 class="mt-4 font-bold">No Sugar Spikes</h3>
+                        <p class="mx-auto mt-2 max-w-48 text-sm leading-5 text-black/65">Enjoy sweetness without the crash.</p>
+                    </div>
+                    <div>
+                        <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#ffe28a] text-2xl">♡</span>
+                        <h3 class="mt-4 font-bold">Supports a Healthier You</h3>
+                        <p class="mx-auto mt-2 max-w-48 text-sm leading-5 text-black/65">A smart choice for everyday wellness.</p>
+                    </div>
+                    <div>
+                        <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#ffe28a] text-2xl">♧</span>
+                        <h3 class="mt-4 font-bold">Made from Nature</h3>
+                        <p class="mx-auto mt-2 max-w-48 text-sm leading-5 text-black/65">Naturally sourced ingredients.</p>
+                    </div>
+                    <div>
+                        <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#ffe28a] text-2xl">☺</span>
+                        <h3 class="mt-4 font-bold">Great Taste, Always</h3>
+                        <p class="mx-auto mt-2 max-w-48 text-sm leading-5 text-black/65">Because you shouldn't have to compromise.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
+            <div class="relative overflow-hidden rounded-3xl bg-[#101010] px-8 py-12 text-white sm:px-12">
+                <div class="relative z-10 max-w-lg">
+                    <p class="text-4xl font-black leading-[.95] tracking-[-.05em]">Same Taste.<br>A Healthier Tomorrow.</p>
+                    <p class="mt-4 text-white/80">Make the switch to a smarter, sweeter you.</p>
+                    <a href="#product" class="mt-7 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold text-black">Shop Now →</a>
+                </div>
+                <div class="absolute -right-8 -bottom-20 h-72 w-72 rounded-full bg-[#37601d] blur-2xl"></div>
+                <div class="absolute bottom-0 right-16 hidden w-40 rounded-t-xl bg-[#0b0b0b] px-3 py-6 text-center text-xl font-black tracking-tighter text-white shadow-2xl sm:block">
+                    SWEAT<br><span class="font-serif text-[#ffd100]">nothing.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+@endsection
