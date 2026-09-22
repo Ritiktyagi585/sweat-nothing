@@ -1,9 +1,189 @@
 /* This file keeps the Contact page responsive even before Vite is rebuilt. */
 .contact-form-layout,
 .contact-info-layout,
-.home-hero-layout {
+.home-hero-layout,
+.product-hero-layout {
     display: grid;
     gap: 1.5rem;
+}
+
+.product-hero-image {
+    height: clamp(18rem, 55vw, 26rem);
+}
+
+.home-hero {
+    background: #fffdf9;
+}
+
+.home-hero-layout {
+    gap: 0;
+}
+
+.home-hero-copy {
+    padding: 3.5rem 1.5rem;
+}
+
+.home-hero-image {
+    position: relative;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.home-hero-image img {
+    display: block;
+}
+
+.home-hero-image::before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10rem;
+    content: '';
+    background: linear-gradient(90deg, #fffdf9 0%, #fffdf9 10%, rgba(255, 253, 249, 0) 100%);
+}
+
+.product-banner {
+    display: grid;
+    overflow: hidden;
+    background: #fffdf9;
+}
+
+.product-banner-copy {
+    display: flex;
+    align-items: center;
+    padding: 3.5rem 1.5rem;
+}
+
+.product-banner-copy-inner {
+    max-width: 32rem;
+}
+
+.product-banner-visual {
+    position: relative;
+    min-height: 22rem;
+}
+
+.product-banner-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 72% center;
+}
+
+.product-banner-visual::before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10rem;
+    content: '';
+    background: linear-gradient(90deg, #fffdf9 0%, #fffdf9 10%, rgba(255, 253, 249, 0) 100%);
+}
+
+.about-hero {
+    display: grid;
+    overflow: hidden;
+    background: #fffdf9;
+}
+
+.about-hero-copy {
+    display: flex;
+    align-items: center;
+    padding: 3.5rem 1.5rem;
+}
+
+.about-hero-copy-inner {
+    max-width: 32rem;
+}
+
+.about-hero-visual {
+    position: relative;
+    min-height: 22rem;
+}
+
+.about-hero-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.about-hero-visual::before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10rem;
+    content: '';
+    background: linear-gradient(90deg, #fffdf9 0%, #fffdf9 10%, rgba(255, 253, 249, 0) 100%);
+}
+
+.contact-hero {
+    display: grid;
+    overflow: hidden;
+    background: #fffdf9;
+}
+
+.contact-hero-copy {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3.5rem 1.5rem;
+}
+
+.contact-hero-copy-inner {
+    max-width: 32rem;
+}
+
+.contact-hero-visual {
+    position: relative;
+    min-height: 22rem;
+}
+
+.contact-hero-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.contact-hero-visual::before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10rem;
+    content: '';
+    background: linear-gradient(90deg, #fffdf9 0%, #fffdf9 10%, rgba(255, 253, 249, 0) 100%);
+}
+
+.contact-details-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.contact-details-list p {
+    margin: 0;
+    line-height: 1.55;
+}
+
+.contact-message-form {
+    box-sizing: border-box;
+    padding: 1.75rem;
+}
+
+@media (max-width: 640px) {
+    .contact-message-form {
+        padding: 1.25rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -16,10 +196,78 @@
     }
 
     .home-hero-layout {
-        grid-template-columns: minmax(22rem, 0.82fr) minmax(34rem, 1.18fr);
+        grid-template-columns: minmax(24rem, 42%) minmax(0, 58%);
+        width: 100%;
+        max-width: none;
+        min-height: 31rem;
+        padding: 0;
+    }
+
+    .product-hero-layout {
+        grid-template-columns: minmax(22rem, 0.9fr) minmax(34rem, 1.1fr);
+    }
+
+    .product-banner {
+        grid-template-columns: minmax(24rem, 42%) minmax(0, 58%);
+        min-height: 31rem;
+    }
+
+    .product-banner-copy {
+        justify-content: flex-end;
+        padding: 4rem;
+    }
+
+    .product-banner-copy-inner {
+        width: min(100%, 32rem);
+    }
+
+    .product-banner-visual {
+        min-height: 31rem;
+    }
+
+    .about-hero {
+        grid-template-columns: minmax(24rem, 42%) minmax(0, 58%);
+        min-height: 31rem;
+    }
+
+    .about-hero-copy {
+        justify-content: flex-end;
+        padding: 4rem;
+    }
+
+    .about-hero-copy-inner {
+        width: min(100%, 32rem);
+    }
+
+    .about-hero-visual {
+        min-height: 31rem;
+    }
+
+    .contact-hero {
+        grid-template-columns: minmax(24rem, 42%) minmax(0, 58%);
+        min-height: 31rem;
+    }
+
+    .contact-hero-copy {
+        justify-content: flex-start;
+        padding: 4rem;
+    }
+
+    .contact-hero-copy-inner {
+        width: min(100%, 32rem);
+    }
+
+    .contact-hero-visual {
+        min-height: 31rem;
     }
 
     .home-hero-image {
         display: block;
+        height: 31rem;
     }
+
+    .home-hero-copy {
+        padding: 4rem;
+    }
+
 }

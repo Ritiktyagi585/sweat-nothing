@@ -4,9 +4,9 @@
 
 @section('content')
     <main id="home" class="overflow-hidden">
-        <section class="relative isolate overflow-hidden bg-[linear-gradient(112deg,#fff9ef_0%,#fffdf9_54%,#f5eee4_100%)]">
+        <section class="home-hero relative isolate overflow-hidden bg-[linear-gradient(112deg,#fff9ef_0%,#fffdf9_54%,#f5eee4_100%)]">
             <div class="home-hero-layout mx-auto grid min-h-[640px] max-w-7xl items-center gap-8 px-6 py-16 lg:grid-cols-[.82fr_1.18fr] lg:px-8 lg:py-20">
-                <div class="relative z-10 max-w-md">
+                <div class="home-hero-copy relative z-10 max-w-md">
                     <p class="mb-3 text-[11px] font-bold tracking-[0.35em] text-black/70">
                         SAME SWEETNESS<br>
                         A HEALTHIER TOMORROW
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="home-hero-image relative hidden h-[440px] overflow-hidden rounded-3xl shadow-xl lg:block">
+                <div class="home-hero-image relative hidden h-[440px] overflow-hidden lg:block">
                     <img
                         src="{{ asset('images/home-banner.png') }}"
                         alt="Sweat Nothing natural sweetener with a cup of chai"
@@ -89,7 +89,7 @@
             </div>
             <div class="relative overflow-hidden rounded-[3rem] bg-[#ffe792] p-10">
                 <p class="relative z-10 font-serif text-3xl italic">Healthier<br>Happier<br>You ♡</p>
-                <img class="absolute -bottom-16 right-0 h-80 w-2/3 object-cover object-left opacity-90 mix-blend-multiply" src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=85" alt="A spoon full of white sugar alternative">
+                <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('images/natural-syrup-bowl.png') }}" alt="Natural syrup flowing into a wooden bowl">
             </div>
         </section>
 
@@ -123,17 +123,11 @@
         </section>
 
         <section class="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
-            <div class="relative overflow-hidden rounded-3xl bg-[#101010] px-8 py-12 text-white sm:px-12">
-                <div class="relative z-10 max-w-lg">
-                    <p class="text-4xl font-black leading-[.95] tracking-[-.05em]">Same Taste.<br>A Healthier Tomorrow.</p>
-                    <p class="mt-4 text-white/80">Make the switch to a smarter, sweeter you.</p>
-                    <a href="#product" class="mt-7 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold text-black">Shop Now →</a>
-                </div>
-                <div class="absolute -right-8 -bottom-20 h-72 w-72 rounded-full bg-[#37601d] blur-2xl"></div>
-                <div class="absolute bottom-0 right-16 hidden w-40 rounded-t-xl bg-[#0b0b0b] px-3 py-6 text-center text-xl font-black tracking-tighter text-white shadow-2xl sm:block">
-                    SWEAT<br><span class="font-serif text-[#ffd100]">nothing.</span>
-                </div>
-            </div>
+            <img
+                src="{{ asset('images/home-commitment-banner.png') }}"
+                alt="Sweat Nothing commitment to a healthier, happier you"
+                class="w-full rounded-3xl object-cover"
+            >
         </section>
     </main>
 @endsection

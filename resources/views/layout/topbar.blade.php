@@ -1,8 +1,7 @@
 <header class="sticky top-0 z-50 border-b border-black/5 bg-[#fffdf9]/95 backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <a href="{{ route('home') }}" class="rounded-md bg-[#101010] px-3 py-2 leading-none text-white" aria-label="Sweat Nothing home">
-            <span class="block text-xl font-black tracking-[-0.12em]">SWEAT</span>
-            <span class="block text-right font-serif text-lg font-bold italic text-[#ffd100]">nothing.</span>
+        <a href="{{ route('home') }}" class="rounded-md bg-[#101010] px-3 py-2" aria-label="Sweat Nothing home">
+            <img class="h-10 w-auto" src="{{ asset('images/brand-logo.png') }}" alt="Sweat Nothing">
         </a>
 
         <nav class="hidden items-center gap-9 text-sm font-medium lg:flex" aria-label="Primary navigation">
