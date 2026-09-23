@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DashboardLoginController;
+use App\Http\Controllers\Admin\EnquiryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Storefront\CartController;
 use App\Http\Controllers\Storefront\CheckoutController;
+use App\Http\Controllers\Storefront\ContactController;
 use App\Http\Controllers\Storefront\ProductController as StorefrontProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,24 +32,23 @@ Route::get('/about-us', function () {
     return view('frontend.about');
 })->name('about');
 
-Route::get('/contact', function () {
-    return view('frontend.contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->name('dashboard');
+Route::get('/dashboard/login', [DashboardLoginController::class, 'create'])->middleware('guest')->name('login');
+Route::post('/dashboard/login', [DashboardLoginController::class, 'store'])->middleware(['guest', 'throttle:dashboard-login'])->name('dashboard.login.store');
 
-Route::get('/dashboard/enquiries', function () {
-    return view('enquries.index');
-})->name('dashboard.enquiries');
+Route::middleware('auth')->group(function () {
+    Route::post('/dashboard/logout', [DashboardLoginController::class, 'destroy'])->name('dashboard.logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/enquiries', [EnquiryController::class, 'index'])->name('dashboard.enquiries');
+    Route::patch('/dashboard/enquiries/{enquiry}', [EnquiryController::class, 'update'])->name('dashboard.enquiries.update');
+    Route::get('/dashboard/orders', [OrderController::class, 'index'])->name('dashboard.orders');
+    Route::patch('/dashboard/orders/{order}', [OrderController::class, 'update'])->name('dashboard.orders.update');
+    Route::get('/dashboard/products', [ProductController::class, 'index'])->name('dashboard.products');
+    Route::get('/dashboard/products/show', [ProductController::class, 'create'])->name('dashboard.products.show');
 
-Route::get('/dashboard/orders', [OrderController::class, 'index'])->name('dashboard.orders');
-
-Route::get('/dashboard/products', [ProductController::class, 'index'])->name('dashboard.products');
-
-Route::get('/dashboard/products/show', [ProductController::class, 'create'])->name('dashboard.products.show');
-
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('products', ProductController::class);
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('products', ProductController::class);
+    });
 });

@@ -21,7 +21,10 @@
                     <a href="#" class="shrink-0 rounded-lg px-5 py-4 transition hover:bg-white/10">&#9881; <span class="ml-3">Settings</span></a>
                 </nav>
 
-                <a href="{{ route('home') }}" class="hidden border-t border-white/10 px-9 py-7 text-sm transition hover:text-[#ffd400] lg:mt-auto lg:block">&#8592; Back to Website</a>
+                <div class="hidden border-t border-white/10 px-4 py-4 lg:mt-auto lg:block">
+                    <a href="{{ route('home') }}" class="block rounded-lg px-5 py-3 text-sm transition hover:bg-white/10 hover:text-[#ffd400]">&#8592; Back to Website</a>
+                    <form action="{{ route('dashboard.logout') }}" method="POST" class="mt-1">@csrf<button class="block w-full rounded-lg px-5 py-3 text-left text-sm text-red-300 transition hover:bg-red-500/10 hover:text-red-200">&#10162; Logout</button></form>
+                </div>
             </aside>
 
             <div class="min-w-0">

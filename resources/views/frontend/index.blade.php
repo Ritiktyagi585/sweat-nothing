@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Sweat Nothing | Less sugar, more life')
+@section('title', 'Sweet Nothing | Less sugar, more life')
 
 @section('content')
     <main id="home" class="overflow-hidden">
@@ -33,7 +33,7 @@
                 <div class="home-hero-image relative hidden h-[440px] overflow-hidden lg:block">
                     <img
                         src="{{ asset('images/home-banner.png') }}"
-                        alt="Sweat Nothing natural sweetener with a cup of chai"
+                        alt="Sweet Nothing natural sweetener with a cup of chai"
                         class="h-full w-full object-cover"
                         style="object-position: 72% center"
                     >
@@ -48,28 +48,28 @@
             </div>
             <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 <article class="group">
-                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=700&q=85" alt="Chai with Sweat Nothing">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=700&q=85" alt="Chai with Sweet Nothing">
                     <div class="mt-3 flex items-end justify-between gap-3">
                         <div><h3 class="font-bold">Chai</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Same comfort. Just better.</p></div>
                         <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
                     </div>
                 </article>
                 <article class="group">
-                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85" alt="Coffee with Sweat Nothing">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85" alt="Coffee with Sweet Nothing">
                     <div class="mt-3 flex items-end justify-between gap-3">
                         <div><h3 class="font-bold">Coffee</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">All the flavour. None of the sugar.</p></div>
                         <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
                     </div>
                 </article>
                 <article class="group">
-                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=85" alt="Desserts with Sweat Nothing">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=85" alt="Desserts with Sweet Nothing">
                     <div class="mt-3 flex items-end justify-between gap-3">
                         <div><h3 class="font-bold">Desserts</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Sweet moments, guilt-free.</p></div>
                         <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
                     </div>
                 </article>
                 <article class="group">
-                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=700&q=85" alt="Baking with Sweat Nothing">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=700&q=85" alt="Baking with Sweet Nothing">
                     <div class="mt-3 flex items-end justify-between gap-3">
                         <div><h3 class="font-bold">Baking</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Because healthy can be delicious.</p></div>
                         <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
@@ -82,7 +82,7 @@
             <div>
                 <h2 class="max-w-md text-4xl font-black leading-[.95] tracking-[-.06em] sm:text-5xl">A Small Swap<br>A Bigger Tomorrow</h2>
                 <p class="mt-5 max-w-md leading-6 text-black/75">
-                    At Sweat Nothing, we believe you don't have to choose between great taste and good health.
+                    At Sweet Nothing, we believe you don't have to choose between great taste and good health.
                     Our sweetness brings a little more joy to your everyday moments — without the sugar.
                 </p>
                 <a href="#contact" class="mt-6 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold">Our Story →</a>
@@ -96,7 +96,7 @@
         <section class="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
             <div class="rounded-3xl bg-[#f7f3ec] px-6 py-12 text-center">
                 <p class="text-[10px] font-bold tracking-[.28em]">A HEALTHIER CHOICE FOR A BRIGHTER YOU</p>
-                <h2 class="mt-2 text-3xl font-black tracking-[-.05em]">Why Choose Sweat Nothing?</h2>
+                <h2 class="mt-2 text-3xl font-black tracking-[-.05em]">Why Choose Sweet Nothing?</h2>
                 <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                     <div>
                         <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#ffe28a] text-2xl">◯</span>
@@ -125,7 +125,7 @@
         <section class="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
             <img
                 src="{{ asset('images/home-commitment-banner.png') }}"
-                alt="Sweat Nothing commitment to a healthier, happier you"
+                alt="Sweet Nothing commitment to a healthier, happier you"
                 class="w-full rounded-3xl object-cover"
             >
         </section>
