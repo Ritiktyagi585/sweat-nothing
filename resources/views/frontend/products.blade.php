@@ -55,7 +55,7 @@
 
             <div>
                 <div class="mb-5 flex items-center justify-between">
-                    <h2 id="product-count" class="text-xl font-black">All Products (6)</h2>
+                    <h2 id="product-count" class="text-xl font-black">All Products ({{ $products->count() }})</h2>
                     <label class="sr-only" for="product-sort">Sort products</label>
                     <select id="product-sort" class="rounded-lg border border-black/15 bg-white px-4 py-2 text-sm">
                         <option value="featured">Sort by: Featured</option>
@@ -63,13 +63,40 @@
                         <option value="high-to-low">Price: High to Low</option>
                     </select>
                 </div>
+                @if (session('success'))
+                    <p class="mb-5 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">{{ session('success') }}</p>
+                @endif
+
+                @if (session('error'))
+                    <p class="mb-5 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">{{ session('error') }}</p>
+                @endif
+
                 <div id="product-grid" class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                    @foreach ([['Original','Natural sweetness for your everyday moments.','₹299','200 g','#ffd100'],['Stevia Blend','Plant based sweetness with stevia extract.','₹349','200 g','#79a64b'],['Monk Fruit Blend','Naturally sweet. Zero compromise.','₹349','200 g','#a7783e'],['Sugar Free Combo Pack','Original + Stevia + Monk Fruit','₹899','3 x 200 g','#f4c700'],['Trial Pack','Perfect to start your healthy journey.','₹149','50 g','#ffd100'],['Gift Pack','A healthier gift for your loved ones.','₹999','200 g + Mug','#252525']] as [$name, $description, $price, $weight, $color])
-                        <article data-product-card data-price="{{ preg_replace('/\D+/', '', $price) }}" class="overflow-hidden rounded-xl border border-black/5 bg-[#fffdf9]">
-                            <div class="relative h-46 bg-[#f3eee7]"><div class="absolute inset-x-0 bottom-0 h-12 bg-[#e6d5bf]"></div><div class="absolute bottom-4 left-1/2 w-28 -translate-x-1/2 rounded-t-lg bg-black px-3 py-5 text-center shadow-xl"><p class="text-lg font-black tracking-tighter text-white">SWEAT</p><p class="font-serif text-lg font-bold italic text-[#ffd100]">nothing.</p><div class="mt-3 py-3 text-[6px] font-black" style="background-color: {{ $color }}">SUGAR FREE</div></div></div>
-                            <div class="p-3"><h3 class="font-bold">Sweat Nothing – {{ $name }}</h3><p class="mt-1 min-h-10 text-sm leading-4 text-black/70">{{ $description }}</p><p class="mt-3 font-bold">{{ $price }} <span class="ml-1 text-sm font-normal text-black/60">{{ $weight }}</span></p><p class="mt-2 text-sm text-[#f6bb00]">★★★★★ <span class="text-black/60">(98)</span></p><button class="mt-3 w-full rounded-full bg-[#ffd100] py-2 text-sm font-bold">🛒 Add to Cart</button></div>
+                    @forelse ($products as $product)
+                        <article data-product-card data-category="{{ strtolower($product->category) }}" data-diets="keto vegan diabetic" data-price="{{ $product->sale_price ?: $product->price }}" class="overflow-hidden rounded-xl border border-black/5 bg-[#fffdf9]">
+                            <div class="relative h-52 bg-[#f3eee7]">
+                                @if ($product->image)
+                                    <img class="h-full w-full object-cover" src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
+                                @else
+                                    <div class="absolute inset-x-0 bottom-0 h-12 bg-[#e6d5bf]"></div>
+                                    <div class="absolute bottom-4 left-1/2 w-28 -translate-x-1/2 rounded-t-lg bg-black px-3 py-5 text-center shadow-xl"><p class="text-lg font-black tracking-tighter text-white">SWEAT</p><p class="font-serif text-lg font-bold italic text-[#ffd100]">nothing.</p><div class="mt-3 bg-[#ffd100] py-3 text-[6px] font-black">SUGAR FREE</div></div>
+                                @endif
+                            </div>
+                            <div class="p-4">
+                                <p class="text-xs font-medium uppercase tracking-wider text-black/50">{{ $product->category }}</p>
+                                <h3 class="mt-1 font-bold">{{ $product->name }}</h3>
+                                <p class="mt-1 min-h-10 text-sm leading-4 text-black/70">{{ $product->description ?: 'Natural sweetness for your everyday moments.' }}</p>
+                                <p class="mt-3 font-bold">₹{{ number_format((float) ($product->sale_price ?: $product->price), 0) }} @if ($product->sale_price)<span class="ml-2 text-sm font-normal text-black/40 line-through">₹{{ number_format((float) $product->price, 0) }}</span>@endif</p>
+                                <p class="mt-2 text-sm text-[#f6bb00]">★★★★★ <span class="text-black/60">In stock: {{ $product->stock }}</span></p>
+                                <form action="{{ route('cart.store', $product) }}" method="POST">
+                                    @csrf
+                                    <button class="mt-3 w-full rounded-full bg-[#ffd100] py-2 text-sm font-bold transition hover:bg-[#f2c300]" type="submit">🛒 Add to Cart</button>
+                                </form>
+                            </div>
                         </article>
-                    @endforeach
+                    @empty
+                        <p class="col-span-full py-12 text-center text-black/60">No products are available right now.</p>
+                    @endforelse
                 </div>
                 <p id="no-products-message" class="hidden py-12 text-center text-black/60">No products match these filters.</p>
             </div>
@@ -88,20 +115,6 @@
                 const noProductsMessage = document.querySelector('#no-products-message');
                 const productSort = document.querySelector('#product-sort');
 
-                const productDetails = {
-                    original: { category: 'sweetener', diets: ['keto', 'vegan', 'diabetic'] },
-                    'stevia blend': { category: 'sweetener', diets: ['vegan', 'diabetic'] },
-                    'monk fruit blend': { category: 'sweetener', diets: ['keto', 'vegan', 'diabetic'] },
-                    'sugar free combo pack': { category: 'combo', diets: ['keto', 'vegan', 'diabetic'] },
-                    'trial pack': { category: 'trial', diets: ['keto', 'vegan', 'diabetic'] },
-                    'gift pack': { category: 'combo', diets: ['vegan'] },
-                };
-
-                const getProductName = (card) => card.querySelector('h3').textContent
-                    .replace('Sweat Nothing – ', '')
-                    .trim()
-                    .toLowerCase();
-
                 const getProductPrice = (card) => Number(card.dataset.price);
 
                 const updateProducts = () => {
@@ -115,9 +128,10 @@
                     let visibleProducts = 0;
 
                     productCards.forEach((card) => {
-                        const details = productDetails[getProductName(card)];
-                        const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(details.category);
-                        const matchesDiet = selectedDiets.every((diet) => details.diets.includes(diet));
+                        const category = card.dataset.category;
+                        const diets = card.dataset.diets.split(' ');
+                        const matchesCategory = selectedCategories.length === 0 || selectedCategories.some((selectedCategory) => category.includes(selectedCategory));
+                        const matchesDiet = selectedDiets.every((diet) => diets.includes(diet));
                         const matchesPrice = getProductPrice(card) <= maximumPrice;
                         const shouldShow = matchesCategory && matchesDiet && matchesPrice;
 

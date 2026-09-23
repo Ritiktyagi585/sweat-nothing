@@ -13,7 +13,12 @@
 
         <div class="flex items-center gap-3">
             <button class="hidden rounded-full p-2 transition hover:bg-black/5 sm:block" aria-label="Search">⌕</button>
-            <button class="hidden rounded-full p-2 transition hover:bg-black/5 sm:block" aria-label="Shopping bag">🛍</button>
+            <a href="{{ route('cart.index') }}" class="relative hidden rounded-full p-2 transition hover:bg-black/5 sm:block" aria-label="Open shopping cart">
+                🛍
+                @if (collect(session('cart', []))->sum('quantity') > 0)
+                    <span class="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-[#ffd100] px-1 text-[10px] font-bold text-black">{{ collect(session('cart', []))->sum('quantity') }}</span>
+                @endif
+            </a>
             <a href="{{ route('products') }}" class="rounded-full bg-[#ffd100] px-5 py-3 text-xs font-bold transition hover:-translate-y-0.5 hover:bg-[#f2c300]">Shop Now →</a>
         </div>
     </div>

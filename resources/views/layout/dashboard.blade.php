@@ -17,7 +17,7 @@
                     <a href="{{ route('dashboard') }}" class="shrink-0 rounded-lg px-5 py-4 transition hover:bg-white/10 {{ request()->routeIs('dashboard') ? 'bg-[#ffd400] font-semibold text-black hover:bg-[#ffd400]' : '' }}">&#8962; <span class="ml-3">Dashboard</span></a>
                     <a href="{{ route('dashboard.enquiries') }}" class="shrink-0 rounded-lg px-5 py-4 transition hover:bg-white/10 {{ request()->routeIs('dashboard.enquiries') ? 'bg-[#ffd400] font-semibold text-black hover:bg-[#ffd400]' : '' }}">&#9993; <span class="ml-3">Enquiries</span></a>
                     <a href="{{ route('dashboard.orders') }}" class="shrink-0 rounded-lg px-5 py-4 transition hover:bg-white/10 {{ request()->routeIs('dashboard.orders') ? 'bg-[#ffd400] font-semibold text-black hover:bg-[#ffd400]' : '' }}">&#128722; <span class="ml-3">Orders</span></a>
-                    <a href="{{ route('dashboard.products') }}" class="shrink-0 rounded-lg px-5 py-4 transition hover:bg-white/10 {{ request()->routeIs('dashboard.products') ? 'bg-[#ffd400] font-semibold text-black hover:bg-[#ffd400]' : '' }}">&#9632; <span class="ml-3">Product</span></a>
+                    <a href="{{ route('dashboard.products.show') }}" class="shrink-0 rounded-lg px-5 py-4 transition hover:bg-white/10 {{ request()->routeIs('dashboard.products*') ? 'bg-[#ffd400] font-semibold text-black hover:bg-[#ffd400]' : '' }}">&#9632; <span class="ml-3">Product</span></a>
                     <a href="#" class="shrink-0 rounded-lg px-5 py-4 transition hover:bg-white/10">&#9881; <span class="ml-3">Settings</span></a>
                 </nav>
 
