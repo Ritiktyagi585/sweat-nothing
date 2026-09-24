@@ -34,7 +34,40 @@
         {{-- Filter controls section ends here. --}}
 
         <section class="mt-4 overflow-hidden rounded-xl bg-white shadow-sm">
-            <div class="overflow-x-auto"><table class="min-w-[1150px] w-full text-left text-sm"><thead class="bg-[#f5f7f9] text-xs font-semibold text-slate-800"><tr><th class="px-4 py-3">#</th><th class="px-4 py-3">Name</th><th class="px-4 py-3">Email</th><th class="px-4 py-3">Phone</th><th class="px-4 py-3">Subject / Message</th><th class="px-4 py-3">Date</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Action</th></tr></thead>
+            <div class="space-y-3 p-3 sm:hidden">
+                @forelse ($enquiries as $enquiry)
+                    @php($statusStyles = ['new' => 'bg-blue-100 text-blue-700', 'responded' => 'bg-emerald-100 text-emerald-700', 'pending' => 'bg-amber-100 text-amber-700'])
+                    <article class="rounded-lg border border-slate-100 p-4">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="min-w-0">
+                                <p class="font-semibold">{{ $enquiry->name }}</p>
+                                <p class="truncate text-xs text-slate-500">{{ $enquiry->email }}</p>
+                            </div>
+                            <span class="shrink-0 rounded-md px-3 py-1.5 text-xs font-medium {{ $statusStyles[$enquiry->status] ?? 'bg-slate-100 text-slate-700' }}">{{ ucfirst($enquiry->status) }}</span>
+                        </div>
+                        <div class="mt-3 grid gap-2 text-sm">
+                            <p><span class="text-slate-500">Phone:</span> {{ $enquiry->phone ?: '—' }}</p>
+                            <p><span class="text-slate-500">Subject:</span> {{ $enquiry->subject }}</p>
+                            <p class="text-xs text-slate-500">{{ $enquiry->message }}</p>
+                            <p class="text-xs text-slate-500">{{ $enquiry->created_at->format('d M Y, h:i A') }}</p>
+                        </div>
+                        <form action="{{ route('dashboard.enquiries.update', $enquiry) }}" method="POST" class="mt-4 flex gap-2">
+                            @csrf
+                            @method('PATCH')
+                            <select name="status" class="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 py-2 text-xs outline-none">
+                                @foreach (['new' => 'New', 'responded' => 'Responded', 'pending' => 'Pending'] as $value => $label)
+                                    <option value="{{ $value }}" @selected($enquiry->status === $value)>{{ $label }}</option>
+                                @endforeach
+                            </select>
+                            <button class="rounded-lg bg-[#ffd400] px-3 py-2 text-xs font-semibold text-black hover:bg-[#eabd00]">Update</button>
+                        </form>
+                    </article>
+                @empty
+                    <p class="py-10 text-center text-sm text-slate-500">No enquiries received yet.</p>
+                @endforelse
+            </div>
+
+            <div class="hidden overflow-x-auto sm:block"><table class="min-w-[1150px] w-full text-left text-sm"><thead class="bg-[#f5f7f9] text-xs font-semibold text-slate-800"><tr><th class="px-4 py-3">#</th><th class="px-4 py-3">Name</th><th class="px-4 py-3">Email</th><th class="px-4 py-3">Phone</th><th class="px-4 py-3">Subject / Message</th><th class="px-4 py-3">Date</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Action</th></tr></thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700">
                     @forelse ($enquiries as $enquiry)
                         @php($statusStyles = ['new' => 'bg-blue-100 text-blue-700', 'responded' => 'bg-emerald-100 text-emerald-700', 'pending' => 'bg-amber-100 text-amber-700'])

@@ -28,5 +28,29 @@
         </section>
 
         <section class="contact-info-layout mx-auto grid max-w-7xl gap-6 px-6 pb-6 lg:grid-cols-[1.25fr_.8fr] lg:px-8"><div class="min-h-64 overflow-hidden rounded-3xl"><iframe class="h-full min-h-64 w-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.5718416539316!2d77.36293017500756!3d28.612618784985653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5687a962671%3A0x5d66885cf442835e!2sLogix%20Cyber%20Park!5e0!3m2!1sen!2sin!4v1789984808026!5m2!1sen!2sin" title="Logix Cyber Park location" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="rounded-3xl bg-[#fff1c5] p-8"><p class="text-xs font-bold tracking-[.3em]">HAVE A QUICK QUESTION?</p><h2 class="mt-2 text-4xl font-black">Find <span class="text-[#ffca00]">Answers</span></h2><p class="mt-4">Check out our FAQs for quick information about our products, shipping, returns and more.</p><button class="mt-5 rounded-full bg-black px-6 py-3 font-bold text-white">Visit FAQs →</button></div></section>
+        <section id="faqs" class="scroll-mt-24 mx-auto max-w-7xl px-6 py-16 lg:px-8">
+            <div class="max-w-2xl">
+                <p class="text-xs font-bold tracking-[.3em]">FREQUENTLY ASKED QUESTIONS</p>
+                <h2 class="mt-3 text-4xl font-black tracking-[-.05em]">Quick <span class="text-[#ffca00]">Answers.</span></h2>
+                <p class="mt-4 leading-6 text-black/70">Everything you may want to know before adding a little more sweetness to your day.</p>
+            </div>
+            <div class="mt-8 grid gap-4 lg:grid-cols-2">
+                <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">What is Sweet Nothing liquid sweetener?</summary><p class="mt-3 text-sm leading-6 text-black/70">It is a convenient sugar alternative made to sweeten your everyday chai, coffee, desserts and recipes with great taste.</p></details>
+                <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">How do I use it in tea or coffee?</summary><p class="mt-3 text-sm leading-6 text-black/70">Add a few drops to your drink, stir well and adjust the quantity according to your preferred sweetness.</p></details>
+                <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">Is it suitable for daily use?</summary><p class="mt-3 text-sm leading-6 text-black/70">It is designed as an easy everyday sugar swap. Please review the product label and consult a healthcare professional for personal dietary guidance.</p></details>
+                <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">How long does delivery take?</summary><p class="mt-3 text-sm leading-6 text-black/70">Orders are usually dispatched promptly and delivery timing depends on your location. We will share tracking details once your order ships.</p></details>
+                <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">Can I return a product?</summary><p class="mt-3 text-sm leading-6 text-black/70">If there is an issue with your order, contact us with your order details and our team will help you with the next steps.</p></details>
+                <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">How can I get help with my order?</summary><p class="mt-3 text-sm leading-6 text-black/70">Use the contact form above or email us at hello@sweatnothing.in. Our support team will get back to you as soon as possible.</p></details>
+            </div>
+        </section>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqButton = Array.from(document.querySelectorAll('button')).find((button) => button.textContent.includes('Visit FAQs'));
+
+            faqButton?.addEventListener('click', () => {
+                document.getElementById('faqs')?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 @endsection

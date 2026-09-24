@@ -18,19 +18,26 @@
             <p class="mt-6 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">{{ session('success') }}</p>
         @endif
 
+        @if (session('error'))
+            <p class="mt-6 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">{{ session('error') }}</p>
+        @endif
+
         @error('cart')
             <p class="mt-6 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">{{ $message }}</p>
         @enderror
 
         <section class="mt-6 grid gap-6 lg:grid-cols-[1fr_340px]">
             <div class="space-y-4">
-                <article class="rounded-2xl border border-black/10 bg-white p-5 opacity-60">
-                    <div class="flex items-center justify-between gap-4"><div><h2 class="font-bold">UPI</h2><p class="mt-1 text-sm text-black/60">Google Pay, PhonePe, Paytm and other UPI apps.</p></div><span class="rounded-full bg-[#f8f5ef] px-3 py-1 text-xs font-semibold">Coming Next</span></div>
-                </article>
-
-                <article class="rounded-2xl border border-black/10 bg-white p-5 opacity-60">
-                    <div class="flex items-center justify-between gap-4"><div><h2 class="font-bold">Debit / Credit Card</h2><p class="mt-1 text-sm text-black/60">Secure card payment through a payment gateway.</p></div><span class="rounded-full bg-[#f8f5ef] px-3 py-1 text-xs font-semibold">Coming Next</span></div>
-                </article>
+                @if ($razorpayOrderId && $razorpayKeyId)
+                    <form id="razorpay-payment-form" action="{{ route('checkout.razorpay.verify') }}" method="POST" class="rounded-2xl border-2 border-[#2f6fed] bg-[#f4f8ff] p-5">
+                        @csrf
+                        <input name="razorpay_order_id" type="hidden">
+                        <input name="razorpay_payment_id" type="hidden">
+                        <input name="razorpay_signature" type="hidden">
+                        <div class="flex items-start justify-between gap-4"><div><h2 class="font-bold">UPI, Cards & More</h2><p class="mt-1 text-sm text-black/70">Pay securely with UPI, debit card, credit card, netbanking or wallets through Razorpay.</p></div><span class="rounded-full bg-[#2f6fed] px-3 py-1 text-xs font-semibold text-white">Razorpay</span></div>
+                        <button id="razorpay-pay-button" class="mt-5 w-full rounded-full bg-[#2f6fed] py-3 text-sm font-bold text-white transition hover:bg-[#245bc6]" type="button">Pay Securely · ₹{{ number_format($cartTotal, 2) }}</button>
+                    </form>
+                @endif
 
                 <form action="{{ route('checkout.place-order') }}" method="POST" class="rounded-2xl border-2 border-[#ffd100] bg-[#fff9dc] p-5">
                     @csrf
@@ -50,4 +57,37 @@
             {{-- Delivery and total summary section ends here. --}}
         </section>
     </main>
+
+    @if ($razorpayOrderId && $razorpayKeyId)
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            document.getElementById('razorpay-pay-button').addEventListener('click', () => {
+                const checkout = new Razorpay({
+                    key: @json($razorpayKeyId),
+                    amount: @json($amountInPaise),
+                    currency: 'INR',
+                    name: 'Sweet Nothing',
+                    description: 'Online order payment',
+                    order_id: @json($razorpayOrderId),
+                    prefill: {
+                        name: @json($address['name']),
+                        email: @json($address['email']),
+                        contact: @json($address['phone']),
+                    },
+                    theme: {
+                        color: '#ffd100',
+                    },
+                    handler: (response) => {
+                        const form = document.getElementById('razorpay-payment-form');
+                        form.querySelector('[name="razorpay_order_id"]').value = response.razorpay_order_id;
+                        form.querySelector('[name="razorpay_payment_id"]').value = response.razorpay_payment_id;
+                        form.querySelector('[name="razorpay_signature"]').value = response.razorpay_signature;
+                        form.submit();
+                    },
+                });
+
+                checkout.open();
+            });
+        </script>
+    @endif
 @endsection

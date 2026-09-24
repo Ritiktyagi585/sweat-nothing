@@ -34,6 +34,7 @@
 }
 
 .home-hero-image::before {
+    display: none;
     position: absolute;
     z-index: 1;
     top: 0;
@@ -196,7 +197,7 @@
     }
 
     .home-hero-layout {
-        grid-template-columns: minmax(24rem, 42%) minmax(0, 58%);
+        grid-template-columns: minmax(24rem, 45%) minmax(0, 55%);
         width: 100%;
         max-width: none;
         min-height: 31rem;
@@ -263,11 +264,31 @@
 
     .home-hero-image {
         display: block;
-        height: 31rem;
+        height: 27rem;
     }
 
     .home-hero-copy {
         padding: 4rem;
+    }
+
+    /* Keep the full 3:1 home campaign banner visible inside the shared hero flow. */
+    .home-hero.product-banner {
+        min-height: 0;
+    }
+
+    .home-hero .product-banner-copy {
+        padding: 2.25rem 4rem;
+    }
+
+    .home-hero .product-banner-visual {
+        align-self: center;
+        min-height: 0;
+        aspect-ratio: 3 / 1;
+    }
+
+    .home-hero .product-banner-visual img {
+        object-fit: contain;
+        object-position: center;
     }
 
 }

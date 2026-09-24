@@ -4,44 +4,44 @@
 
 @section('content')
     <main id="home" class="overflow-hidden">
-        <section class="home-hero relative isolate overflow-hidden bg-[linear-gradient(112deg,#fff9ef_0%,#fffdf9_54%,#f5eee4_100%)]">
-            <div class="home-hero-layout mx-auto grid min-h-[640px] max-w-7xl items-center gap-8 px-6 py-16 lg:grid-cols-[.82fr_1.18fr] lg:px-8 lg:py-20">
-                <div class="home-hero-copy relative z-10 max-w-md">
-                    <p class="mb-3 text-[11px] font-bold tracking-[0.35em] text-black/70">
+        <section class="home-hero product-banner">
+            <div class="contents">
+                <div class="home-hero-copy product-banner-copy relative z-10">
+                    <div class="product-banner-copy-inner">
+                    <p class="mb-3 text-[9px] font-bold tracking-[0.28em] text-black/70 sm:text-[11px] sm:tracking-[0.35em]">
                         SAME SWEETNESS<br>
                         A HEALTHIER TOMORROW
                     </p>
-                    <h1 class="max-w-xl text-5xl font-black leading-[0.88] tracking-[-0.07em] sm:text-7xl">
+                    <h1 class="max-w-xl text-4xl font-black leading-[0.88] tracking-[-0.07em] sm:text-5xl lg:text-6xl">
                         Less<br>
                         Sugar.<br>
                         <span class="text-[#ffcf00]">More Life.</span>
                     </h1>
-                    <p class="mt-5 max-w-sm text-base leading-6 text-black/75">
+                    <p class="mt-4 max-w-sm text-sm leading-5 text-black/75 sm:text-base sm:leading-6">
                         Your everyday sugar alternative for chai, coffee, desserts and more.
                     </p>
-                    <a href="#product" class="mt-7 inline-flex rounded-full bg-[#ffd100] px-7 py-4 text-sm font-bold shadow-[0_8px_24px_rgba(255,209,0,.25)] transition hover:-translate-y-1">
+                    <a href="{{ route('products') }}" class="mt-4 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-xs font-bold shadow-[0_8px_24px_rgba(255,209,0,.25)] transition hover:-translate-y-1 sm:px-7 sm:py-3 sm:text-sm">
                         Explore Product&nbsp; →
                     </a>
-                    <div class="mt-10 grid max-w-md grid-cols-4 gap-4 text-center text-[10px] font-semibold leading-3">
-                        <div><span class="mb-2 block text-3xl">◯</span>Zero Added<br>Sugar</div>
-                        <div><span class="mb-2 block text-3xl">♡</span>Keto<br>Friendly</div>
-                        <div><span class="mb-2 block text-3xl">♧</span>Plant<br>Based</div>
-                        <div><span class="mb-2 block text-3xl">☺</span>Great<br>Taste</div>
+                    <div class="mt-8 grid max-w-md grid-cols-4 gap-2 text-center text-[8px] font-semibold leading-3 sm:mt-10 sm:gap-4 sm:text-[10px] lg:mt-6">
+                        <div><span class="mb-1 block text-2xl sm:mb-2 sm:text-3xl">◯</span>Zero Added<br>Sugar</div>
+                        <div><span class="mb-1 block text-2xl sm:mb-2 sm:text-3xl">♡</span>Keto<br>Friendly</div>
+                        <div><span class="mb-1 block text-2xl sm:mb-2 sm:text-3xl">♧</span>Plant<br>Based</div>
+                        <div><span class="mb-1 block text-2xl sm:mb-2 sm:text-3xl">☺</span>Great<br>Taste</div>
+                    </div>
                     </div>
                 </div>
 
-                <div class="home-hero-image relative hidden h-[440px] overflow-hidden lg:block">
+                <div class="home-hero-image product-banner-visual">
                     <img
-                        src="{{ asset('images/home-banner.png') }}"
-                        alt="Sweet Nothing natural sweetener with a cup of chai"
-                        class="h-full w-full object-cover"
-                        style="object-position: 72% center"
+                        src="{{ asset('images/home-celebrity-banner.png') }}"
+                        alt="Sweet Nothings Liquid Sweetener campaign with Shankar Mahadevan"
                     >
                 </div>
             </div>
         </section>
 
-        <section id="product" class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <section id="product" class="mx-auto max-w-7xl px-5 py-10 sm:px-6 sm:py-16 lg:px-8">
             <div class="mb-8 text-center">
                 <p class="text-[10px] font-bold tracking-[0.3em]">SWEET MOMENTS, NEW POSSIBILITIES</p>
                 <h2 class="mt-2 text-3xl font-black tracking-[-0.05em] sm:text-4xl">Made for What You Love</h2>
@@ -85,7 +85,7 @@
                     At Sweet Nothing, we believe you don't have to choose between great taste and good health.
                     Our sweetness brings a little more joy to your everyday moments — without the sugar.
                 </p>
-                <a href="#contact" class="mt-6 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold">Our Story →</a>
+                <a href="{{ route('about') }}" class="mt-6 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold">Our Story →</a>
             </div>
             <div class="relative overflow-hidden rounded-[3rem] bg-[#ffe792] p-10">
                 <p class="relative z-10 font-serif text-3xl italic">Healthier<br>Happier<br>You ♡</p>

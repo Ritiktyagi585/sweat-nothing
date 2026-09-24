@@ -26,7 +26,39 @@
         {{-- Order statistics section ends here. --}}
 
         <section class="mt-5 overflow-hidden rounded-xl bg-white shadow-sm">
-            <div class="overflow-x-auto">
+            <div class="space-y-3 p-3 sm:hidden">
+                @forelse ($orders as $index => $order)
+                    <article class="rounded-lg border border-slate-100 p-4">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="min-w-0">
+                                <p class="text-xs text-slate-500">Order #{{ $index + 1 }}</p>
+                                <p class="break-all font-semibold">{{ $order->order_number }}</p>
+                            </div>
+                            <span class="shrink-0 rounded-md px-3 py-1.5 text-xs font-medium {{ $order->order_status === 'pending' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800' }}">{{ ucfirst($order->order_status) }}</span>
+                        </div>
+
+                        <div class="mt-3 grid gap-2 text-sm">
+                            <p><span class="text-slate-500">Customer:</span> {{ $order->customer_name }}</p>
+                            <p class="break-all text-xs text-slate-500">{{ $order->email }}</p>
+                            <p><span class="text-slate-500">Product:</span> {{ $order->items->first()?->product_name ?? 'Product unavailable' }}@if ($order->items_count > 1) <span class="text-xs text-slate-500">+{{ $order->items_count - 1 }} more</span>@endif</p>
+                            <div class="flex items-center justify-between gap-3"><p><span class="text-slate-500">Total:</span> <span class="font-semibold">₹{{ number_format((float) $order->total, 2) }}</span></p><p class="text-xs text-slate-500">{{ $order->created_at->format('d M Y, h:i A') }}</p></div>
+                            <p><span class="text-slate-500">Payment:</span> {{ strtoupper($order->payment_method) }} <span class="text-xs text-amber-700">({{ ucfirst($order->payment_status) }})</span></p>
+                        </div>
+
+                        <form action="{{ route('dashboard.orders.update', $order) }}" method="POST" class="mt-4 grid gap-2">
+                            @csrf
+                            @method('PATCH')
+                            <select name="order_status" class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs"><option value="pending" @selected($order->order_status === 'pending')>Pending</option><option value="confirmed" @selected($order->order_status === 'confirmed')>Confirmed</option><option value="packed" @selected($order->order_status === 'packed')>Packed</option><option value="shipped" @selected($order->order_status === 'shipped')>Shipped</option><option value="delivered" @selected($order->order_status === 'delivered')>Delivered</option><option value="cancelled" @selected($order->order_status === 'cancelled')>Cancelled</option></select>
+                            <select name="payment_status" class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs"><option value="pending" @selected($order->payment_status === 'pending')>Payment Pending</option><option value="paid" @selected($order->payment_status === 'paid')>Paid</option><option value="failed" @selected($order->payment_status === 'failed')>Failed</option><option value="refunded" @selected($order->payment_status === 'refunded')>Refunded</option></select>
+                            <button class="rounded-lg bg-[#ffd400] px-3 py-2 text-xs font-semibold text-black hover:bg-[#e9c300]" type="submit">Update Order</button>
+                        </form>
+                    </article>
+                @empty
+                    <p class="py-10 text-center text-sm text-slate-500">No website orders yet. Completed customer checkout orders will show here.</p>
+                @endforelse
+            </div>
+
+            <div class="hidden overflow-x-auto sm:block">
                 <table class="min-w-[1220px] w-full text-left text-sm">
                     <thead class="bg-[#f5f7f9] text-xs font-semibold text-slate-800"><tr><th class="px-4 py-3">#</th><th class="px-4 py-3">Order ID</th><th class="px-4 py-3">Customer</th><th class="px-4 py-3">Products</th><th class="px-4 py-3">Total</th><th class="px-4 py-3">Payment</th><th class="px-4 py-3">Status</th><th class="px-4 py-3">Date</th><th class="px-4 py-3">Action</th></tr></thead>
                     <tbody class="divide-y divide-slate-100 text-slate-700">

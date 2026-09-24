@@ -1,8 +1,8 @@
 <footer id="contact" class="bg-[#101010] text-white">
     <div class="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 md:flex-row md:items-center md:justify-between lg:px-8">
         <div class="flex items-center gap-6">
-            <div class="border-r border-white/25 pr-6">
-                <img class="h-14 w-auto" src="{{ asset('images/brand-logo.png') }}" alt="Sweat Nothing">
+            <div class="rounded-lg bg-white p-2">
+                <img class="h-10 w-auto" src="{{ asset('images/ayurth-logo.png') }}" alt="Ayurth.com">
             </div>
             <p class="text-sm leading-5 text-white/75">A healthier,<br> sweeter tomorrow.</p>
         </div>

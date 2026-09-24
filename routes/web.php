@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardLoginController;
 use App\Http\Controllers\Admin\EnquiryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Storefront\CartController;
 use App\Http\Controllers\Storefront\CheckoutController;
 use App\Http\Controllers\Storefront\ContactController;
@@ -25,6 +26,7 @@ Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout/address', [CheckoutController::class, 'store'])->name('checkout.address.store');
 Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
+Route::post('/checkout/razorpay/verify', [CheckoutController::class, 'verifyRazorpayPayment'])->name('checkout.razorpay.verify');
 Route::post('/checkout/place-order', [CheckoutController::class, 'placeOrder'])->name('checkout.place-order');
 Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
@@ -47,6 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/dashboard/orders/{order}', [OrderController::class, 'update'])->name('dashboard.orders.update');
     Route::get('/dashboard/products', [ProductController::class, 'index'])->name('dashboard.products');
     Route::get('/dashboard/products/show', [ProductController::class, 'create'])->name('dashboard.products.show');
+    Route::get('/dashboard/settings', [SettingsController::class, 'index'])->name('dashboard.settings');
+    Route::patch('/dashboard/settings', [SettingsController::class, 'update'])->name('dashboard.settings.update');
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('products', ProductController::class);

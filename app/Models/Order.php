@@ -21,6 +21,8 @@ class Order extends Model
         'subtotal',
         'total',
         'payment_method',
+        'gateway_order_id',
+        'gateway_payment_id',
         'payment_status',
         'order_status',
     ];

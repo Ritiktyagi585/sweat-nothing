@@ -28,28 +28,37 @@
         </section>
 
         <section class="mx-auto grid max-w-7xl gap-8 px-6 py-10 lg:grid-cols-[220px_1fr] lg:px-8">
-            <aside class="rounded-2xl bg-[#f8f5ef] p-5 text-sm">
-                <h2 class="text-lg font-bold">Filters</h2>
-
-                <div class="mt-5 border-t border-black/10 pt-4">
-                    <p class="font-bold">Category</p>
-                    <label class="mt-3 block"><input checked data-filter-all type="checkbox" class="accent-[#ffd100]"> All Products</label>
-                    <label class="mt-2 block"><input data-category="sweetener" type="checkbox" class="accent-[#ffd100]"> Sweetener</label>
-                    <label class="mt-2 block"><input data-category="combo" type="checkbox" class="accent-[#ffd100]"> Combo Pack</label>
-                    <label class="mt-2 block"><input data-category="trial" type="checkbox" class="accent-[#ffd100]"> Trial Packs</label>
+            <aside class="rounded-2xl bg-[#f8f5ef] p-4 text-sm sm:p-5">
+                <div class="flex items-center justify-between lg:block">
+                    <h2 class="text-lg font-bold">Filters</h2>
+                    <p class="text-xs text-black/55 lg:hidden">Choose your preference</p>
                 </div>
 
-                <div class="mt-6 border-t border-black/10 pt-4">
+                <div class="mt-4 grid gap-3 lg:mt-5 lg:block">
+                <div class="min-w-0 rounded-xl border border-black/10 bg-white/70 p-3 lg:rounded-none lg:border-x-0 lg:border-b-0 lg:border-t lg:bg-transparent lg:px-0 lg:pb-0 lg:pt-4">
+                    <p class="font-bold">Category</p>
+                    <div class="mt-3 grid grid-cols-2 gap-x-2 gap-y-2 lg:block">
+                        <label class="block"><input checked data-filter-all type="checkbox" class="accent-[#ffd100]"> All Products</label>
+                        <label class="block lg:mt-2"><input data-category="sweetener" type="checkbox" class="accent-[#ffd100]"> Sweetener</label>
+                        <label class="block lg:mt-2"><input data-category="combo" type="checkbox" class="accent-[#ffd100]"> Combo Pack</label>
+                        <label class="block lg:mt-2"><input data-category="trial" type="checkbox" class="accent-[#ffd100]"> Trial Packs</label>
+                    </div>
+                </div>
+
+                <div class="min-w-0 rounded-xl border border-black/10 bg-white/70 p-3 lg:mt-6 lg:rounded-none lg:border-x-0 lg:border-b-0 lg:border-t lg:bg-transparent lg:px-0 lg:pb-0 lg:pt-4">
                     <label for="price-range" class="font-bold">Price Range</label>
                     <input id="price-range" class="mt-4 w-full accent-[#ffd100]" type="range" min="0" max="1000" step="50" value="1000">
                     <div class="mt-2 flex justify-between text-xs"><span>₹0</span><span id="price-range-value">₹1,000</span></div>
                 </div>
 
-                <div class="mt-6 border-t border-black/10 pt-4">
+                <div class="min-w-0 rounded-xl border border-black/10 bg-white/70 p-3 lg:mt-6 lg:rounded-none lg:border-x-0 lg:border-b-0 lg:border-t lg:bg-transparent lg:px-0 lg:pb-0 lg:pt-4">
                     <p class="font-bold">Diet Preference</p>
-                    <label class="mt-3 block"><input data-diet="keto" type="checkbox" class="accent-[#ffd100]"> Keto Friendly</label>
-                    <label class="mt-2 block"><input data-diet="vegan" type="checkbox" class="accent-[#ffd100]"> Vegan</label>
-                    <label class="mt-2 block"><input data-diet="diabetic" type="checkbox" class="accent-[#ffd100]"> Diabetic Friendly</label>
+                    <div class="mt-3 flex flex-wrap gap-x-3 gap-y-2 lg:block">
+                        <label class="block"><input data-diet="keto" type="checkbox" class="accent-[#ffd100]"> Keto Friendly</label>
+                        <label class="block lg:mt-2"><input data-diet="vegan" type="checkbox" class="accent-[#ffd100]"> Vegan</label>
+                        <label class="block lg:mt-2"><input data-diet="diabetic" type="checkbox" class="accent-[#ffd100]"> Diabetic Friendly</label>
+                    </div>
+                </div>
                 </div>
             </aside>
 
