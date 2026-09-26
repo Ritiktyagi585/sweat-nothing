@@ -13,7 +13,7 @@
             <aside id="dashboard-sidebar" class="fixed inset-y-0 left-0 z-50 flex w-[260px] -translate-x-full flex-col overflow-y-auto bg-[#101111] text-white transition-transform duration-200 lg:sticky lg:top-0 lg:h-screen lg:w-auto lg:translate-x-0 lg:self-start">
                 <a href="{{ route('dashboard') }}" class="px-7 py-6 leading-none lg:px-9 lg:py-8" aria-label="Ayurth dashboard home">
                     <span class="inline-flex rounded-lg bg-white p-2">
-                        <img class="h-9 w-auto" src="{{ asset('images/ayurth-logo.png') }}" alt="Ayurth.com">
+                        <img class="h-9 w-auto" src="{{ asset('images/ayurthlogoh.png') }}" alt="Ayurth">
                     </span>
                 </a>
 

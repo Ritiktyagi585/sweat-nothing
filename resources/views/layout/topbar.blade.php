@@ -1,7 +1,7 @@
 <header class="sticky top-0 z-50 border-b border-black/5 bg-[#fffdf9]/95 backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-3 py-2.5 sm:px-5 sm:py-4 lg:px-8">
         <a href="{{ route('home') }}" class="py-1" aria-label="Ayurth home">
-            <img class="h-7 w-auto sm:h-9" src="{{ asset('images/ayurth-logo.png') }}" alt="Ayurth.com">
+            <img class="h-12 w-auto sm:h-16" src="{{ asset('images/ayurthlogoh.png') }}" alt="Ayurth">
         </a>
 
         <nav class="hidden items-center gap-9 text-sm font-medium lg:flex" aria-label="Primary navigation">

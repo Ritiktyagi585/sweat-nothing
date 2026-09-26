@@ -24,17 +24,17 @@
                 <label class="mt-4 block text-sm"><input name="privacy_policy" value="1" type="checkbox" @checked(old('privacy_policy'))> I agree to the privacy policy.</label>@error('privacy_policy')<p class="mt-1 text-xs text-red-600">{{ $message }}</p>@enderror
                 <button type="submit" class="mt-5 w-full rounded-full bg-[#ffd100] py-4 font-bold">Send Message →</button>
             </form>
-            <div class="contact-details-card rounded-3xl bg-[#fff1c5] p-7"><h2 class="text-2xl font-black">Our Contact Details</h2><p class="mt-1 text-sm">Reach us through any of the following channels.</p><div class="contact-details-list mt-7 space-y-5"><p><b>📍 Our Address</b><br>Tower-C, Cyber Park, 712 A,<br>Noida – 62, India</p><p><b>☎ Call Us</b><br>+91 20 456 7890<br><span class="text-sm text-black/60">Mon – Fri, 10:00 AM – 6:00 PM</span></p><p><b>✉ Email Us</b><br>hello@sweatnothing.in<br><span class="text-sm text-black/60">We'll get back to you within 24 hours.</span></p><p><b>◷ Business Hours</b><br>Monday – Friday: 10:00 AM – 6:00 PM<br>Saturday: 10:00 AM – 2:00 PM</p></div></div>
+            <div class="contact-details-card rounded-3xl bg-[#fff1c5] p-7"><h2 class="text-2xl font-black">Our Contact Details</h2><p class="mt-1 text-sm">Reach us through any of the following channels.</p><div class="contact-details-list mt-7 space-y-5"><p><b>☎ Call Us</b><br>+91 20 456 7890<br><span class="text-sm text-black/60">Mon – Fri, 10:00 AM – 6:00 PM</span></p><p><b>✉ Email Us</b><br>hello@sweatnothing.in<br><span class="text-sm text-black/60">We'll get back to you within 24 hours.</span></p><p><b>◷ Business Hours</b><br>Monday – Friday: 10:00 AM – 6:00 PM<br>Saturday: 10:00 AM – 2:00 PM</p></div></div>
         </section>
 
-        <section class="contact-info-layout mx-auto grid max-w-7xl gap-6 px-6 pb-6 lg:grid-cols-[1.25fr_.8fr] lg:px-8"><div class="min-h-64 overflow-hidden rounded-3xl"><iframe class="h-full min-h-64 w-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.5718416539316!2d77.36293017500756!3d28.612618784985653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5687a962671%3A0x5d66885cf442835e!2sLogix%20Cyber%20Park!5e0!3m2!1sen!2sin!4v1789984808026!5m2!1sen!2sin" title="Logix Cyber Park location" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="rounded-3xl bg-[#fff1c5] p-8"><p class="text-xs font-bold tracking-[.3em]">HAVE A QUICK QUESTION?</p><h2 class="mt-2 text-4xl font-black">Find <span class="text-[#ffca00]">Answers</span></h2><p class="mt-4">Check out our FAQs for quick information about our products, shipping, returns and more.</p><button class="mt-5 rounded-full bg-black px-6 py-3 font-bold text-white">Visit FAQs →</button></div></section>
-        <section id="faqs" class="scroll-mt-24 mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <section class="mx-auto max-w-7xl px-6 pb-6 lg:px-8"><div class="rounded-3xl bg-[#fff1c5] p-8"><p class="text-xs font-bold tracking-[.3em]">HAVE A QUICK QUESTION?</p><h2 class="mt-2 text-4xl font-black">Find <span class="text-[#ffca00]">Answers</span></h2><p class="mt-4">Check out our FAQs for quick information about our products, shipping, returns and more.</p><button id="visit-faqs" type="button" aria-controls="faqs" aria-expanded="false" class="mt-5 rounded-full bg-black px-6 py-3 font-bold text-white">Visit FAQs →</button></div></section>
+        <section id="faqs" hidden class="scroll-mt-24 mx-auto max-w-7xl px-6 py-16 lg:px-8">
             <div class="max-w-2xl">
                 <p class="text-xs font-bold tracking-[.3em]">FREQUENTLY ASKED QUESTIONS</p>
                 <h2 class="mt-3 text-4xl font-black tracking-[-.05em]">Quick <span class="text-[#ffca00]">Answers.</span></h2>
                 <p class="mt-4 leading-6 text-black/70">Everything you may want to know before adding a little more sweetness to your day.</p>
             </div>
-            <div class="mt-8 grid gap-4 lg:grid-cols-2">
+            <div class="mt-8 grid items-start gap-4 lg:grid-cols-2">
                 <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">What is Sweet Nothing liquid sweetener?</summary><p class="mt-3 text-sm leading-6 text-black/70">It is a convenient sugar alternative made to sweeten your everyday chai, coffee, desserts and recipes with great taste.</p></details>
                 <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">How do I use it in tea or coffee?</summary><p class="mt-3 text-sm leading-6 text-black/70">Add a few drops to your drink, stir well and adjust the quantity according to your preferred sweetness.</p></details>
                 <details class="rounded-2xl border border-black/10 bg-white p-5"><summary class="cursor-pointer font-bold">Is it suitable for daily use?</summary><p class="mt-3 text-sm leading-6 text-black/70">It is designed as an easy everyday sugar swap. Please review the product label and consult a healthcare professional for personal dietary guidance.</p></details>
@@ -46,10 +46,13 @@
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const faqButton = Array.from(document.querySelectorAll('button')).find((button) => button.textContent.includes('Visit FAQs'));
+            const faqButton = document.getElementById('visit-faqs');
+            const faqSection = document.getElementById('faqs');
 
             faqButton?.addEventListener('click', () => {
-                document.getElementById('faqs')?.scrollIntoView({ behavior: 'smooth' });
+                faqSection.hidden = false;
+                faqButton.setAttribute('aria-expanded', 'true');
+                faqSection.scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
