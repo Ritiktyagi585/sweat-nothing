@@ -48,28 +48,28 @@
             </div>
             <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 <article class="group">
-                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=700&q=85" alt="Chai with Sweet Nothing">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="{{ asset('images/chai.jpg') }}" alt="Chai with Sweet Nothing">
                     <div class="mt-3 flex items-end justify-between gap-3">
                         <div><h3 class="font-bold">Chai</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Same comfort. Just better.</p></div>
                         <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
                     </div>
                 </article>
                 <article class="group">
-                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85" alt="Coffee with Sweet Nothing">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="{{ asset('images/coffee.jpg') }}" alt="Coffee with Sweet Nothing">
                     <div class="mt-3 flex items-end justify-between gap-3">
                         <div><h3 class="font-bold">Coffee</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">All the flavour. None of the sugar.</p></div>
                         <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
                     </div>
                 </article>
                 <article class="group">
-                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=85" alt="Desserts with Sweet Nothing">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="{{ asset('images/desserts.jpg') }}" alt="Desserts with Sweet Nothing">
                     <div class="mt-3 flex items-end justify-between gap-3">
                         <div><h3 class="font-bold">Desserts</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Sweet moments, guilt-free.</p></div>
                         <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>
                     </div>
                 </article>
                 <article class="group">
-                    <img class="h-52 w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=700&q=85" alt="Baking with Sweet Nothing">
+                    <img class="h-52 w-full rounded-2xl object-cover" src="{{ asset('images/baking.jpg') }}" alt="Baking with Sweet Nothing">
                     <div class="mt-3 flex items-end justify-between gap-3">
                         <div><h3 class="font-bold">Baking</h3><p class="mt-1 max-w-36 text-xs leading-4 text-black/70">Because healthy can be delicious.</p></div>
                         <span class="rounded-full bg-[#ffd100] px-3 py-2 font-bold">→</span>

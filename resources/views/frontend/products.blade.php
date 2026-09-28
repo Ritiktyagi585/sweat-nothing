@@ -194,6 +194,6 @@
             });
         </script>
 
-        <section class="mx-auto mb-8 max-w-7xl px-6 lg:px-8"><div class="grid overflow-hidden rounded-3xl bg-[#fff0bd] md:grid-cols-2"><img class="h-56 w-full object-cover" src="https://images.unsplash.com/photo-1514995669114-6081e934b693?auto=format&fit=crop&w=900&q=85" alt="Healthy breakfast bowl"><div class="p-9"><h2 class="font-serif text-4xl font-bold leading-none">Make Everyday<br>Moments Healthier</h2><p class="mt-4">From your morning chai to your favourite desserts, Sweat Nothing fits right in.</p><button class="mt-5 rounded-full bg-black px-6 py-3 text-sm font-bold text-white">Explore Recipes →</button></div></div></section>
+        <section class="mx-auto mb-8 max-w-7xl px-6 lg:px-8"><div class="grid overflow-hidden rounded-3xl bg-[#fff0bd] md:grid-cols-2"><img class="h-56 w-full object-cover" src="{{ asset('images/healthy-breakfast.jpg') }}" alt="Healthy breakfast bowl"><div class="p-9"><h2 class="font-serif text-4xl font-bold leading-none">Make Everyday<br>Moments Healthier</h2><p class="mt-4">From your morning chai to your favourite desserts, Sweat Nothing fits right in.</p><button class="mt-5 rounded-full bg-black px-6 py-3 text-sm font-bold text-white">Explore Recipes →</button></div></div></section>
     </main>
 @endsection
