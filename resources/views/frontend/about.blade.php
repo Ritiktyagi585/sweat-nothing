@@ -7,30 +7,355 @@
         <section class="about-hero bg-[#fff9ef]">
             <div class="about-hero-copy">
                 <div class="about-hero-copy-inner">
-                    <p class="text-xs font-bold tracking-[.35em]">OUR STORY</p>
-                    <h1 class="mt-4 text-5xl font-black leading-[.9] tracking-[-.07em] sm:text-7xl">A Sweeter<br>Tomorrow,<br><span class="text-[#ffcf00]">For Everyone.</span></h1>
-                    <p class="mt-5 max-w-md leading-6 text-black/75">At Sweet Nothing, we believe you don't have to choose between taste and health. Our natural sweetener brings sweetness to your everyday moments — without the sugar.</p>
-                    <a href="#journey" class="mt-6 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold">Our Journey →</a>
+                    <p class="text-xs font-bold tracking-[.35em]">
+                        OUR STORY
+                    </p>
+                    <h1 class="mt-4 text-5xl font-black leading-[.9] tracking-[-.07em] sm:text-7xl">
+                        A Sweeter
+                        <br>
+                        Tomorrow,
+                        <br>
+                        <span class="text-[#ffcf00]">
+                            For Everyone.
+                        </span>
+                    </h1>
+                    <p class="mt-5 max-w-md leading-6 text-black/75">
+                        At Sweet Nothing, we believe you don't have to choose between taste and health. Our natural
+                        sweetener brings sweetness to your everyday moments — without the sugar.
+                    </p>
+                    <a href="#journey" class="mt-6 inline-flex rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold">
+                        Our Journey →
+                    </a>
                 </div>
-                </div>
-
+            </div>
             <div class="about-hero-visual">
-                <img src="{{ asset('images/about-banner.png') }}" alt="Sweet Nothings liquid sweetener for baking and wellness">
+                <img src="{{ asset('images/about-banner.png') }}"
+                    alt="Sweet Nothings liquid sweetener for baking and wellness">
             </div>
         </section>
 
-        <section id="journey" class="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-[1fr_1.45fr_.7fr] lg:px-8">
-            <div class="relative min-h-72 overflow-hidden rounded-bl-[7rem] rounded-tr-[7rem] bg-[#20180e]"><img class="absolute inset-0 h-full w-full object-cover opacity-75" src="{{ asset('images/freshly-brewed-chai.jpg') }}" alt="A freshly brewed cup of chai"><p class="absolute left-6 top-7 font-serif text-2xl italic text-white">Small<br>Changes<br>Make a<br>Big Difference ♡</p></div>
-            <div><p class="text-xs font-bold tracking-[.3em]">OUR STORY</p><h2 class="mt-2 text-4xl font-black tracking-[-.05em]">Born From a <span class="text-[#ffca00]">Simple Idea</span></h2><p class="mt-5 font-medium">It all started with a simple question — Can we enjoy the sweetness we love, without the drawbacks of sugar?</p><p class="mt-4 leading-6 text-black/70">We saw friends and family trying to cut down on sugar, but struggling to find a tasty, natural alternative. So, we created Sweet Nothing — a smarter, healthier way to enjoy your favourite foods and drinks.</p><p class="mt-3 leading-6 text-black/70">Today, our mission remains the same: to make everyday moments sweeter, healthier and worry-free for everyone.</p></div>
-            <div class="grid gap-5"><div class="flex gap-3"><span class="grid h-12 w-12 place-items-center rounded-full bg-[#ffe593] text-2xl">◯</span><p><b>100%</b><br><span class="text-sm">Natural Ingredients</span></p></div><div class="flex gap-3"><span class="grid h-12 w-12 place-items-center rounded-full bg-[#ffe593] text-2xl">♡</span><p><b>10,000+</b><br><span class="text-sm">Happy Customers</span></p></div><div class="flex gap-3"><span class="grid h-12 w-12 place-items-center rounded-full bg-[#ffe593] text-2xl">♧</span><p><b>Growing</b><br><span class="text-sm">Across India</span></p></div><div class="flex gap-3"><span class="grid h-12 w-12 place-items-center rounded-full bg-[#ffe593] text-2xl">☺</span><p><b>A Healthier</b><br><span class="text-sm">Tomorrow</span></p></div></div>
+        <section id="journey"
+            class="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-[1fr_1.45fr_.7fr] lg:px-8">
+            <div class="relative min-h-72 overflow-hidden rounded-bl-[7rem] rounded-tr-[7rem] bg-[#20180e]">
+                <img class="absolute inset-0 h-full w-full object-cover opacity-75"
+                    src="{{ asset('images/freshly-brewed-chai.jpg') }}" alt="A freshly brewed cup of chai">
+                <p class="absolute left-6 top-7 font-serif text-2xl italic text-white">
+                    Small
+                    <br>
+                    Changes
+                    <br>
+                    Make a
+                    <br>
+                    Big Difference ♡
+                </p>
+            </div>
+            <div>
+                <p class="text-xs font-bold tracking-[.3em]">
+                    OUR STORY
+                </p>
+                <h2 class="mt-2 text-4xl font-black tracking-[-.05em]">
+                    Born From a
+                    <span class="text-[#ffca00]">
+                        Simple Idea
+                    </span>
+                </h2>
+                <p class="mt-5 font-medium">
+                    It all started with a simple question — Can we enjoy the sweetness we love, without the drawbacks of
+                    sugar?
+                </p>
+                <p class="mt-4 leading-6 text-black/70">
+                    We saw friends and family trying to cut down on sugar, but struggling to find a tasty, natural
+                    alternative. So, we created Sweet Nothing — a smarter, healthier way to enjoy your favourite foods and
+                    drinks.
+                </p>
+                <p class="mt-3 leading-6 text-black/70">
+                    Today, our mission remains the same: to make everyday moments sweeter, healthier and worry-free for
+                    everyone.
+                </p>
+            </div>
+            <div class="grid gap-5">
+                <div class="flex gap-3">
+                    <span class="grid h-12 w-12 place-items-center rounded-full bg-[#ffe593] text-2xl">
+                        ◯
+                    </span>
+                    <p>
+                        <b>
+                            100%
+                        </b>
+                        <br>
+                        <span class="text-sm">
+                            Natural Ingredients
+                        </span>
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="grid h-12 w-12 place-items-center rounded-full bg-[#ffe593] text-2xl">
+                        ♡
+                    </span>
+                    <p>
+                        <b>
+                            10,000+
+                        </b>
+                        <br>
+                        <span class="text-sm">
+                            Happy Customers
+                        </span>
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="grid h-12 w-12 place-items-center rounded-full bg-[#ffe593] text-2xl">
+                        ♧
+                    </span>
+                    <p>
+                        <b>
+                            Growing
+                        </b>
+                        <br>
+                        <span class="text-sm">
+                            Across India
+                        </span>
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="grid h-12 w-12 place-items-center rounded-full bg-[#ffe593] text-2xl">
+                        ☺
+                    </span>
+                    <p>
+                        <b>
+                            A Healthier
+                        </b>
+                        <br>
+                        <span class="text-sm">
+                            Tomorrow
+                        </span>
+                    </p>
+                </div>
+            </div>
         </section>
 
-        <section class="bg-[#fff4c9]"><div class="mx-auto grid max-w-7xl items-center gap-8 px-6 py-12 lg:grid-cols-2 lg:px-8"><div><p class="text-xs font-bold tracking-[.3em]">WHAT WE STAND FOR</p><h2 class="mt-2 text-4xl font-black tracking-[-.05em]">More Than <span class="text-[#ffca00]">Just a Sweetener</span></h2><p class="mt-4 max-w-lg">We're here to support healthier choices, happier lives and a brighter tomorrow.</p><div class="mt-8 grid grid-cols-2 gap-7 sm:grid-cols-4"><div><span class="text-3xl">◯</span><h3 class="mt-2 font-bold">Better Health</h3><p class="text-sm">Enjoy sweetness without the crash.</p></div><div><span class="text-3xl">♡</span><h3 class="mt-2 font-bold">Great Taste</h3><p class="text-sm">Delicious in every sip and bite.</p></div><div><span class="text-3xl">♧</span><h3 class="mt-2 font-bold">Made from Nature</h3><p class="text-sm">Naturally sourced ingredients.</p></div><div><span class="text-3xl">☺</span><h3 class="mt-2 font-bold">For Everyone</h3><p class="text-sm">A smarter choice for all ages.</p></div></div></div><img class="h-80 w-full rounded-[3rem] object-cover" src="{{ asset('images/natural-syrup-bowl.png') }}" alt="Natural syrup flowing into a wooden bowl"></div></section>
+        <section class="bg-[#fff4c9]">
+            <div class="mx-auto grid max-w-7xl items-center gap-8 px-6 py-12 lg:grid-cols-2 lg:px-8">
+                <div>
+                    <p class="text-xs font-bold tracking-[.3em]">
+                        WHAT WE STAND FOR
+                    </p>
+                    <h2 class="mt-2 text-4xl font-black tracking-[-.05em]">
+                        More Than
+                        <span class="text-[#ffca00]">
+                            Just a Sweetener
+                        </span>
+                    </h2>
+                    <p class="mt-4 max-w-lg">
+                        We're here to support healthier choices, happier lives and a brighter tomorrow.
+                    </p>
+                    <div class="mt-8 grid grid-cols-2 gap-7 sm:grid-cols-4">
+                        <div>
+                            <span class="text-3xl">
+                                ◯
+                            </span>
+                            <h3 class="mt-2 font-bold">
+                                Better Health
+                            </h3>
+                            <p class="text-sm">
+                                Enjoy sweetness without the crash.
+                            </p>
+                        </div>
+                        <div>
+                            <span class="text-3xl">
+                                ♡
+                            </span>
+                            <h3 class="mt-2 font-bold">
+                                Great Taste
+                            </h3>
+                            <p class="text-sm">
+                                Delicious in every sip and bite.
+                            </p>
+                        </div>
+                        <div>
+                            <span class="text-3xl">
+                                ♧
+                            </span>
+                            <h3 class="mt-2 font-bold">
+                                Made from Nature
+                            </h3>
+                            <p class="text-sm">
+                                Naturally sourced ingredients.
+                            </p>
+                        </div>
+                        <div>
+                            <span class="text-3xl">
+                                ☺
+                            </span>
+                            <h3 class="mt-2 font-bold">
+                                For Everyone
+                            </h3>
+                            <p class="text-sm">
+                                A smarter choice for all ages.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <img class="h-80 w-full rounded-[3rem] object-cover" src="{{ asset('images/natural-syrup-bowl.png') }}"
+                    alt="Natural syrup flowing into a wooden bowl">
+            </div>
+        </section>
 
-        <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8"><p class="text-xs font-bold tracking-[.3em]">OUR PROCESS</p><div class="grid items-center gap-8 lg:grid-cols-[1.1fr_2fr]"><div><h2 class="mt-2 text-4xl font-black leading-none tracking-[-.05em]">From Nature to<br><span class="text-[#ffca00]">Your Cup</span></h2><p class="mt-4 leading-6">We carefully source natural ingredients, blend them with care and ensure the highest quality — so you get the same great taste, without the sugar.</p><a href="#process-details" class="mt-5 inline-block rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold transition hover:bg-[#eabd00]">Learn More →</a></div><div class="grid grid-cols-2 gap-5 sm:grid-cols-4"><div class="text-center"><img class="mx-auto h-24 w-24 rounded-full object-cover" src="{{ asset('images/natural-leaves.jpg') }}" alt="Natural leaves"><p class="mt-3 text-sm font-bold">Naturally<br>Sourced Ingredients</p></div><div class="text-center"><img class="mx-auto h-24 w-24 rounded-full object-cover" src="{{ asset('images/carefully-blended.png') }}" alt="Natural herbs being carefully blended"><p class="mt-3 text-sm font-bold">Carefully<br>Blended</p></div><div class="text-center"><img class="mx-auto h-24 w-24 rounded-full object-cover" src="{{ asset('images/quality-tested.png') }}" alt="Laboratory quality testing"><p class="mt-3 text-sm font-bold">Quality<br>Tested</p></div><div class="text-center"><img class="mx-auto h-24 w-24 rounded-full object-cover" src="{{ asset('images/chai.jpg') }}" alt="Healthy chai"><p class="mt-3 text-sm font-bold">Ready for<br>A Healthier You</p></div></div></div></section>
+        <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+            <p class="text-xs font-bold tracking-[.3em]">
+                OUR PROCESS
+            </p>
+            <div class="grid items-center gap-8 lg:grid-cols-[1.1fr_2fr]">
+                <div>
+                    <h2 class="mt-2 text-4xl font-black leading-none tracking-[-.05em]">
+                        From Nature to
+                        <br>
+                        <span class="text-[#ffca00]">
+                            Your Cup
+                        </span>
+                    </h2>
+                    <p class="mt-4 leading-6">
+                        We carefully source natural ingredients, blend them with care and ensure the highest quality — so
+                        you get the same great taste, without the sugar.
+                    </p>
+                    <a href="#process-details"
+                        class="mt-5 inline-block rounded-full bg-[#ffd100] px-6 py-3 text-sm font-bold transition hover:bg-[#eabd00]">
+                        Learn More →
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-5 sm:grid-cols-4">
+                    <div class="text-center">
+                        <img class="mx-auto h-24 w-24 rounded-full object-cover"
+                            src="{{ asset('images/natural-leaves.jpg') }}" alt="Natural leaves">
+                        <p class="mt-3 text-sm font-bold">
+                            Naturally
+                            <br>
+                            Sourced Ingredients
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <img class="mx-auto h-24 w-24 rounded-full object-cover"
+                            src="{{ asset('images/carefully-blended.png') }}" alt="Natural herbs being carefully blended">
+                        <p class="mt-3 text-sm font-bold">
+                            Carefully
+                            <br>
+                            Blended
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <img class="mx-auto h-24 w-24 rounded-full object-cover"
+                            src="{{ asset('images/quality-tested.png') }}" alt="Laboratory quality testing">
+                        <p class="mt-3 text-sm font-bold">
+                            Quality
+                            <br>
+                            Tested
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <img class="mx-auto h-24 w-24 rounded-full object-cover" src="{{ asset('images/chai.jpg') }}"
+                            alt="Healthy chai">
+                        <p class="mt-3 text-sm font-bold">
+                            Ready for
+                            <br>
+                            A Healthier You
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <section id="process-details" class="scroll-mt-24 bg-[#fff4c9]"><div class="mx-auto max-w-7xl px-6 py-16 lg:px-8"><div class="max-w-2xl"><p class="text-xs font-bold tracking-[.3em]">THE SWEET NOTHING WAY</p><h2 class="mt-3 text-4xl font-black leading-none tracking-[-.05em]">Made With Care,<br><span class="text-[#ffca00]">For Everyday Wellness.</span></h2><p class="mt-5 leading-7 text-black/70">Every bottle is made to keep the sweetness you enjoy while helping you make a smarter choice for your daily chai, coffee, desserts and more.</p></div><div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><article class="rounded-3xl bg-white p-6"><span class="text-sm font-black text-[#d9a900]">01</span><h3 class="mt-5 text-xl font-black">Sourced with care</h3><p class="mt-3 text-sm leading-6 text-black/70">We select quality ingredients from trusted sources for a naturally better sweetness.</p></article><article class="rounded-3xl bg-white p-6"><span class="text-sm font-black text-[#d9a900]">02</span><h3 class="mt-5 text-xl font-black">Blended for taste</h3><p class="mt-3 text-sm leading-6 text-black/70">Our recipe is carefully balanced so your favourite drinks and recipes still taste great.</p></article><article class="rounded-3xl bg-white p-6"><span class="text-sm font-black text-[#d9a900]">03</span><h3 class="mt-5 text-xl font-black">Checked for quality</h3><p class="mt-3 text-sm leading-6 text-black/70">Each batch is reviewed for consistent quality before it reaches your kitchen.</p></article><article class="rounded-3xl bg-white p-6"><span class="text-sm font-black text-[#d9a900]">04</span><h3 class="mt-5 text-xl font-black">Ready for your cup</h3><p class="mt-3 text-sm leading-6 text-black/70">A simple swap that fits beautifully into your everyday routine, one sweet moment at a time.</p></article></div></div></section>
+        <section id="process-details" class="scroll-mt-24 bg-[#fff4c9]">
+            <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+                <div class="max-w-2xl">
+                    <p class="text-xs font-bold tracking-[.3em]">
+                        THE SWEET NOTHING WAY
+                    </p>
+                    <h2 class="mt-3 text-4xl font-black leading-none tracking-[-.05em]">
+                        Made With Care,
+                        <br>
+                        <span class="text-[#ffca00]">
+                            For Everyday Wellness.
+                        </span>
+                    </h2>
+                    <p class="mt-5 leading-7 text-black/70">
+                        Every bottle is made to keep the sweetness you enjoy while helping you make a smarter choice for
+                        your daily chai, coffee, desserts and more.
+                    </p>
+                </div>
+                <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <article class="rounded-3xl bg-white p-6">
+                        <span class="text-sm font-black text-[#d9a900]">
+                            01
+                        </span>
+                        <h3 class="mt-5 text-xl font-black">
+                            Sourced with care
+                        </h3>
+                        <p class="mt-3 text-sm leading-6 text-black/70">
+                            We select quality ingredients from trusted sources for a naturally better sweetness.
+                        </p>
+                    </article>
+                    <article class="rounded-3xl bg-white p-6">
+                        <span class="text-sm font-black text-[#d9a900]">
+                            02
+                        </span>
+                        <h3 class="mt-5 text-xl font-black">
+                            Blended for taste
+                        </h3>
+                        <p class="mt-3 text-sm leading-6 text-black/70">
+                            Our recipe is carefully balanced so your favourite drinks and recipes still taste great.
+                        </p>
+                    </article>
+                    <article class="rounded-3xl bg-white p-6">
+                        <span class="text-sm font-black text-[#d9a900]">
+                            03
+                        </span>
+                        <h3 class="mt-5 text-xl font-black">
+                            Checked for quality
+                        </h3>
+                        <p class="mt-3 text-sm leading-6 text-black/70">
+                            Each batch is reviewed for consistent quality before it reaches your kitchen.
+                        </p>
+                    </article>
+                    <article class="rounded-3xl bg-white p-6">
+                        <span class="text-sm font-black text-[#d9a900]">
+                            04
+                        </span>
+                        <h3 class="mt-5 text-xl font-black">
+                            Ready for your cup
+                        </h3>
+                        <p class="mt-3 text-sm leading-6 text-black/70">
+                            A simple swap that fits beautifully into your everyday routine, one sweet moment at a time.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-        <section class="bg-[#17110d] text-white"><div class="mx-auto grid max-w-7xl items-center gap-8 px-6 py-12 lg:grid-cols-[1.25fr_.75fr] lg:px-8"><div><p class="text-xs font-bold tracking-[.3em]">OUR COMMITMENT</p><h2 class="mt-2 text-4xl font-black leading-none tracking-[-.05em]">A Healthier,<br><span class="text-[#ffca00]">Happier You</span></h2><p class="mt-5 max-w-lg leading-6 text-white/80">We are committed to innovating, educating and making healthy choices accessible to everyone. Because we believe a small swap today can create a bigger, brighter tomorrow.</p></div><blockquote class="rounded-3xl bg-[#fff8df] p-8 font-serif text-2xl italic leading-8 text-[#1a1612]">“Our goal is simple — to make the world a little sweeter and a lot healthier.”<footer class="mt-5 font-sans text-sm not-italic">— Team Sweet Nothing</footer></blockquote></div></section>
+        <section class="bg-[#17110d] text-white">
+            <div class="mx-auto grid max-w-7xl items-center gap-8 px-6 py-12 lg:grid-cols-[1.25fr_.75fr] lg:px-8">
+                <div>
+                    <p class="text-xs font-bold tracking-[.3em]">
+                        OUR COMMITMENT
+                    </p>
+                    <h2 class="mt-2 text-4xl font-black leading-none tracking-[-.05em]">
+                        A Healthier,
+                        <br>
+                        <span class="text-[#ffca00]">
+                            Happier You
+                        </span>
+                    </h2>
+                    <p class="mt-5 max-w-lg leading-6 text-white/80">
+                        We are committed to innovating, educating and making healthy choices accessible to everyone. Because
+                        we believe a small swap today can create a bigger, brighter tomorrow.
+                    </p>
+                </div>
+                <blockquote class="rounded-3xl bg-[#fff8df] p-8 font-serif text-2xl italic leading-8 text-[#1a1612]">
+                    “Our goal is simple — to make the world a little sweeter and a lot healthier.”
+                    <footer class="mt-5 font-sans text-sm not-italic">
+                        — Team Sweet Nothing
+                    </footer>
+                </blockquote>
+            </div>
+        </section>
+
     </main>
 @endsection
