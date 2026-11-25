@@ -216,24 +216,6 @@
                 </div>
 
 
-                {{-- Stock --}}
-                <div class="mt-5 md:max-w-[calc(50%-0.625rem)]">
-
-                    <label for="stock" class="text-sm font-medium">
-                        Stock Quantity
-                        <span class="text-red-500">*</span>
-                    </label>
-
-                    <input id="stock" name="stock" value="{{ old('stock', $product?->stock) }}"
-                        class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-[#ffd400]"
-                        type="number" min="0" placeholder="0" required>
-
-                    <p class="mt-1 text-xs text-slate-500">
-                        Enter available stock quantity.
-                    </p>
-
-                </div>
-
             </section>
 
 
@@ -276,7 +258,7 @@
                         </span>
 
                         <span class="mt-2 text-xs text-slate-400">
-                            JPG, JPEG, PNG or WEBP (Max 2MB)
+                            JPG, JPEG, PNG or WEBP (Max 10MB)
                         </span>
 
                         <input name="image" class="hidden" type="file" accept="image/jpeg,image/png,image/webp">

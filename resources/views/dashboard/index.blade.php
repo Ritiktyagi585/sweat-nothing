@@ -3,136 +3,53 @@
 @section('title', 'Dashboard | Sweat Nothing')
 
 @section('content')
-    <main class="mx-auto max-w-[1500px] p-5 lg:p-7">
-        <section class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+    <main class="dashboard-overview mx-auto max-w-[1500px] p-5 lg:p-7">
+        <section class="dashboard-overview-head flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-                <p class="text-slate-500">Good
-                    {{ now()->hour < 12 ? 'Morning' : (now()->hour < 18 ? 'Afternoon' : 'Evening') }}!</p>
-                <h1 class="mt-1 text-2xl font-bold tracking-[-.03em] sm:text-3xl">Welcome Back, Ritik!</h1>
-                <p class="mt-2 text-slate-500">Here's a live overview of your store.</p>
+                <p class="dashboard-greeting">Good {{ now()->hour < 12 ? 'Morning' : (now()->hour < 18 ? 'Afternoon' : 'Evening') }}!</p>
+                <h1 class="dashboard-overview-title">Welcome Back, {{ auth()->user()?->name ?? 'Admin' }}!</h1>
+                <p class="dashboard-overview-subtitle">Here's a live overview of your store.</p>
             </div>
-            <p class="rounded-lg bg-white px-4 py-3 text-sm text-slate-500 shadow-sm">📅 {{ now()->format('l, d M Y') }}</p>
+            <p class="dashboard-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>{{ now()->format('l, d M Y') }}</p>
         </section>
-        {{-- Dashboard heading section ends here. --}}
 
-        <section class="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <article class="rounded-2xl bg-white p-5 shadow-sm">
-                <div class="flex items-center gap-4"><span
-                        class="grid h-16 w-16 place-items-center rounded-full bg-[#fff3cf] text-3xl">🛒</span>
-                    <div>
-                        <p class="text-xs text-slate-500">Today's Orders</p>
-                        <p class="mt-1 text-2xl font-bold">{{ $dashboardStats['todayOrders'] }}</p>
-                        <p class="mt-1 text-xs text-slate-500">Placed today</p>
-                    </div>
-                </div>
-            </article>
-            <article class="rounded-2xl bg-white p-5 shadow-sm">
-                <div class="flex items-center gap-4"><span
-                        class="grid h-16 w-16 place-items-center rounded-full bg-[#dcf7e3] text-3xl">📦</span>
-                    <div>
-                        <p class="text-xs text-slate-500">Total Orders</p>
-                        <p class="mt-1 text-2xl font-bold">{{ $dashboardStats['totalOrders'] }}</p>
-                        <p class="mt-1 text-xs text-emerald-600">From website checkout</p>
-                    </div>
-                </div>
-            </article>
-            <article class="rounded-2xl bg-white p-5 shadow-sm">
-                <div class="flex items-center gap-4"><span
-                        class="grid h-16 w-16 place-items-center rounded-full bg-[#e2efff] text-3xl">◼</span>
-                    <div>
-                        <p class="text-xs text-slate-500">Total Products</p>
-                        <p class="mt-1 text-2xl font-bold">{{ $dashboardStats['totalProducts'] }}</p>
-                        <p class="mt-1 text-xs text-slate-500">In product database</p>
-                    </div>
-                </div>
-            </article>
-            <article class="rounded-2xl bg-white p-5 shadow-sm">
-                <div class="flex items-center gap-4"><span
-                        class="grid h-16 w-16 place-items-center rounded-full bg-[#ffe3e3] text-3xl font-black text-[#b80000]">₹</span>
-                    <div>
-                        <p class="text-xs text-slate-500">Total Revenue</p>
-                        <p class="mt-1 text-2xl font-bold">₹{{ number_format((float) $dashboardStats['totalRevenue'], 2) }}
-                        </p>
-                        <p class="mt-1 text-xs text-slate-500">Excluding cancelled orders</p>
-                    </div>
-                </div>
-            </article>
+        <section class="dashboard-stat-grid mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <article class="dashboard-stat-card"><div class="flex items-center gap-4"><span class="dashboard-stat-icon bg-[#fff3cf]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg></span><div><p class="dashboard-stat-label">Today's Orders</p><p class="dashboard-stat-count">{{ $dashboardStats['todayOrders'] }}</p><p class="dashboard-stat-caption">Placed today</p></div></div></article>
+            <article class="dashboard-stat-card"><div class="flex items-center gap-4"><span class="dashboard-stat-icon bg-[#dff7e6]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"/><path d="m3.8 7.7 8.2 4.5 8.2-4.5M12 12.2V21"/></svg></span><div><p class="dashboard-stat-label">Total Orders</p><p class="dashboard-stat-count">{{ $dashboardStats['totalOrders'] }}</p><p class="dashboard-stat-caption text-emerald-600">From website checkout</p></div></div></article>
+            <article class="dashboard-stat-card"><div class="flex items-center gap-4"><span class="dashboard-stat-icon bg-[#e2efff]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"/><path d="m3.8 7.7 8.2 4.5 8.2-4.5M12 12.2V21"/></svg></span><div><p class="dashboard-stat-label">Total Products</p><p class="dashboard-stat-count">{{ $dashboardStats['totalProducts'] }}</p><p class="dashboard-stat-caption">In product database</p></div></div></article>
+            <article class="dashboard-stat-card"><div class="flex items-center gap-4"><span class="dashboard-stat-icon bg-[#ffe3e3] text-[#b80000]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v18m5-14H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg></span><div><p class="dashboard-stat-label">Total Revenue</p><p class="dashboard-stat-count">₹{{ number_format((float) $dashboardStats['totalRevenue'], 2) }}</p><p class="dashboard-stat-caption">Excluding cancelled orders</p></div></div></article>
         </section>
-        {{-- Live statistics section ends here. --}}
 
-        <section class="mt-5 grid gap-5 xl:grid-cols-[1.35fr_.95fr]">
-            <article class="rounded-2xl bg-white p-5 shadow-sm lg:p-6">
-                <div class="flex items-center justify-between gap-4">
-                    <div>
-                        <h2 class="text-lg font-semibold">Orders Overview</h2>
-                        <p class="mt-1 text-xs text-slate-500">Orders received in the last 7 days</p>
-                    </div><span class="rounded-lg border border-black/10 px-3 py-2 text-xs">Last 7 Days</span>
-                </div>
-                <div class="mt-6 grid h-64 grid-cols-7 items-end gap-3 border-b border-slate-200 px-2">
+        <section class="dashboard-overview-panels mt-4 grid gap-4 xl:grid-cols-[1.35fr_.95fr]">
+            <article class="dashboard-panel">
+                <div class="flex items-center justify-between gap-4"><div><h2 class="dashboard-panel-title">Orders Overview</h2><p class="dashboard-panel-subtitle">Orders received in the last 7 days</p></div><span class="dashboard-period-pill">Last 7 Days</span></div>
+                <div class="dashboard-chart mt-5 grid grid-cols-7 items-end gap-3 border-b border-slate-200 px-2">
                     @foreach ($orderChart as $day)
-                        <div class="flex h-full flex-col justify-end text-center">
-                            <span class="mb-2 text-xs font-semibold text-slate-600">{{ $day['count'] }}</span>
-                            <div class="rounded-t-lg bg-[#ffd400] transition hover:bg-[#e9c300]"
-                                style="height: {{ $day['height'] }}%"></div>
-                            <span class="mt-3 whitespace-nowrap text-[11px] text-slate-500">{{ $day['label'] }}</span>
-                        </div>
+                        <div class="dashboard-chart-column flex h-full flex-col justify-end text-center"><span class="mb-2 text-xs font-semibold text-slate-600">{{ $day['count'] }}</span><div class="dashboard-chart-bar rounded-t-lg bg-[#ffd400] transition hover:bg-[#e9c300]" style="height: {{ max(4, $day['height']) }}%"></div><span class="mt-2 whitespace-nowrap text-[11px] text-slate-500">{{ $day['label'] }}</span></div>
                     @endforeach
                 </div>
             </article>
 
-            <article class="rounded-2xl bg-white p-5 shadow-sm lg:p-6">
-                <div class="flex items-center justify-between">
-                    <h2 class="text-lg font-semibold">Recent Orders</h2><a href="{{ route('dashboard.orders') }}"
-                        class="text-xs font-medium hover:underline">View All</a>
-                </div>
-                <div class="mt-4 space-y-3">
+            <article class="dashboard-panel">
+                <div class="flex items-center justify-between"><h2 class="dashboard-panel-title">Recent Orders</h2><a href="{{ route('dashboard.orders') }}" class="dashboard-view-all">View All</a></div>
+                <div class="dashboard-recent-list mt-3">
                     @forelse ($recentOrders as $order)
-                        <div class="flex items-center gap-3 border-b border-black/5 pb-3 last:border-0">
-                            <span class="grid h-10 w-10 place-items-center rounded-lg bg-[#fff4cc] text-lg">📦</span>
-                            <div class="min-w-0 flex-1">
-                                <p class="font-medium">{{ $order->order_number }}</p>
-                                <p class="truncate text-xs text-slate-500">{{ $order->created_at->format('d M Y, h:i A') }}
-                                </p>
-                            </div>
-                            <p class="font-semibold">₹{{ number_format((float) $order->total, 2) }}</p>
-                            <span
-                                class="hidden rounded-lg px-3 py-2 text-xs font-medium sm:block {{ $order->order_status === 'pending' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800' }}">{{ ucfirst($order->order_status) }}</span>
-                        </div>
+                        <div class="dashboard-recent-order"><span class="dashboard-recent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"/><path d="m3.8 7.7 8.2 4.5 8.2-4.5M12 12.2V21"/></svg></span><div class="min-w-0 flex-1"><p class="truncate font-medium">{{ $order->order_number }}</p><p class="truncate text-xs text-slate-500">{{ $order->created_at->format('d M Y, h:i A') }}</p></div><p class="shrink-0 font-semibold">₹{{ number_format((float) $order->total, 2) }}</p><span class="dashboard-order-status {{ $order->order_status === 'pending' ? 'is-pending' : 'is-complete' }}">{{ ucfirst($order->order_status) }}</span></div>
                     @empty
-                        <p class="py-10 text-center text-sm text-slate-500">No orders received yet.</p>
+                        <div class="dashboard-empty-state"><span class="dashboard-empty-icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 12h4l4 21h20l5-15H15"/><circle cx="20" cy="39" r="2"/><circle cx="34" cy="39" r="2"/></svg></span><strong>No orders yet</strong><span>Completed website orders will appear here.</span></div>
                     @endforelse
                 </div>
             </article>
         </section>
-        {{-- Dynamic chart and recent orders section ends here. --}}
 
-        <section class="mt-5 grid gap-5 xl:grid-cols-[1.05fr_.95fr]">
-            <article class="relative min-h-60 overflow-hidden rounded-2xl bg-[#131313] p-7 text-white shadow-sm"><img
-                    src="{{ asset('images/dashboard-promo.png') }}" alt="Natural sweetener jar"
-                    class="absolute inset-0 h-full w-full object-cover opacity-75">
-                <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent"></div>
-                <div class="relative z-10 max-w-52">
-                    <p class="text-2xl font-bold tracking-[-.08em]">SWEAT</p>
-                    <p class="font-serif text-2xl font-semibold italic text-[#ffd400]">nothing.</p>
-                    <p class="mt-5 text-lg font-medium leading-tight">Goodness in<br>Every Drop.</p>
-                    <div class="mt-5 h-1 w-24 rounded-full bg-[#ffd400]"></div>
-                </div>
-            </article>
-
-            <article class="rounded-2xl bg-white p-5 shadow-sm lg:p-6">
-                <h2 class="text-lg font-semibold">Quick Actions</h2>
-                <div class="mt-4 grid gap-3 sm:grid-cols-2"><a href="{{ route('dashboard.enquiries') }}"
-                        class="rounded-xl bg-[#fff6d8] p-5 text-center font-medium transition hover:-translate-y-0.5"><span
-                            class="mb-2 block text-2xl">✉</span>View Enquiries</a><a href="{{ route('dashboard.orders') }}"
-                        class="rounded-xl bg-[#dff7e6] p-5 text-center font-medium transition hover:-translate-y-0.5"><span
-                            class="mb-2 block text-2xl">🛒</span>Manage Orders</a><a
-                        href="{{ route('dashboard.products') }}"
-                        class="rounded-xl bg-[#e3efff] p-5 text-center font-medium transition hover:-translate-y-0.5"><span
-                            class="mb-2 block text-2xl">◼</span>Manage Products</a><a href="#"
-                        class="rounded-xl bg-[#ffe5e5] p-5 text-center font-medium transition hover:-translate-y-0.5"><span
-                            class="mb-2 block text-2xl">⚙</span>Site Settings</a></div>
-            </article>
+        <section class="dashboard-overview-bottom mt-4 grid gap-4 xl:grid-cols-[1.05fr_.95fr]">
+            <article class="dashboard-promo-card"><img src="{{ asset('images/dashboard-promo.png') }}" alt="Natural sweetener jar" class="absolute inset-0 h-full w-full object-cover opacity-75"><div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent"></div><div class="relative z-10 max-w-52"><p class="text-2xl font-bold tracking-[-.08em]">SWEET</p><p class="font-serif text-2xl font-semibold italic text-[#ffd400]">nothing.</p><p class="mt-4 text-lg font-medium leading-tight">Goodness in<br>Every Drop.</p><div class="mt-4 h-1 w-24 rounded-full bg-[#ffd400]"></div></div></article>
+            <article class="dashboard-panel"><h2 class="dashboard-panel-title">Quick Actions</h2><div class="dashboard-quick-grid mt-4 grid gap-3 sm:grid-cols-2">
+                <a href="{{ route('dashboard.enquiries') }}" class="dashboard-quick-action bg-[#fff6d8]"><span class="dashboard-quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span>View Enquiries</a>
+                <a href="{{ route('dashboard.orders') }}" class="dashboard-quick-action bg-[#dff7e6]"><span class="dashboard-quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg></span>Manage Orders</a>
+                <a href="{{ route('dashboard.products') }}" class="dashboard-quick-action bg-[#e3efff]"><span class="dashboard-quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"/><path d="m3.8 7.7 8.2 4.5 8.2-4.5M12 12.2V21"/></svg></span>Manage Products</a>
+                <a href="{{ route('dashboard.settings') }}" class="dashboard-quick-action bg-[#ffe5e5]"><span class="dashboard-quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 1.1.9-1.5 2.6-1.4-.6a8 8 0 0 1-1.6.9l-.2 1.5h-3l-.4-1.5a8 8 0 0 1-1.6-.9l-1.4.6-1.5-2.6L7 15a8 8 0 0 1 0-1.8l-1.1-.9 1.5-2.6 1.4.6a8 8 0 0 1 1.6-.9l.2-1.5h3l.4 1.5a8 8 0 0 1 1.6.9l1.4-.6 1.5 2.6-1.1.9a8 8 0 0 1 0 1.8Z"/></svg></span>Site Settings</a>
+            </div></article>
         </section>
-        {{-- Dashboard quick actions section ends here. --}}
     </main>
 @endsection

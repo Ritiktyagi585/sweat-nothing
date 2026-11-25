@@ -37,6 +37,8 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request): RedirectResponse
     {
         $productData = $request->validated();
+        // Keep new products available for checkout when inventory is managed outside this form.
+        $productData['stock'] = (int) ($productData['stock'] ?? 10);
 
         $productData['slug'] = Str::slug($productData['name']).'-'.Str::lower(Str::random(6));
 

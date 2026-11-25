@@ -54,10 +54,6 @@
                         </dd>
                     </div>
                     <div>
-                        <dt class="text-xs font-medium uppercase tracking-wider text-slate-500">Stock</dt>
-                        <dd class="mt-1 font-semibold">{{ $product->stock }} units</dd>
-                    </div>
-                    <div>
                         <dt class="text-xs font-medium uppercase tracking-wider text-slate-500">Status</dt>
                         <dd class="mt-1"><span
                                 class="rounded-md px-3 py-1.5 text-xs font-medium {{ $product->status ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600' }}">{{ $product->status ? 'Active' : 'Inactive' }}</span>

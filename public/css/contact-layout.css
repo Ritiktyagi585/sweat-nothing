@@ -208,9 +208,15 @@
         grid-template-columns: minmax(22rem, 0.9fr) minmax(34rem, 1.1fr);
     }
 
+    .product-banner,
+    .about-hero,
+    .contact-hero {
+        height: 31rem;
+        min-height: 31rem;
+    }
+
     .product-banner {
         grid-template-columns: minmax(24rem, 42%) minmax(0, 58%);
-        min-height: 31rem;
     }
 
     .product-banner-copy {
@@ -271,9 +277,9 @@
         padding: 4rem;
     }
 
-    /* Keep the full 3:1 home campaign banner visible inside the shared hero flow. */
     .home-hero.product-banner {
-        min-height: 0;
+        height: 31rem;
+        min-height: 31rem;
     }
 
     .home-hero .product-banner-copy {
@@ -281,12 +287,26 @@
     }
 
     .home-hero .product-banner-visual {
-        align-self: center;
+        align-self: stretch;
         width: 100%;
         min-width: 0;
-        height: auto;
-        min-height: 0;
-        aspect-ratio: 3 / 1;
+        height: 31rem;
+        min-height: 31rem;
+        aspect-ratio: auto;
+    }
+
+    .home-hero .product-banner-visual {
+        background: #fffdf9;
+    }
+
+    .home-hero .product-banner-visual::before {
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 2.25rem;
+        background: linear-gradient(90deg, #fffdf9 0%, rgb(255 253 249 / 55%) 28%, rgb(255 253 249 / 0%) 100%);
+        pointer-events: none;
     }
 
     .home-hero .product-banner-visual img {
@@ -294,4 +314,320 @@
         object-position: center;
     }
 
+}
+
+/* Homepage hero: let the wide campaign image keep its natural ratio and align
+   its center with the copy instead of centering it inside a fixed tall box. */
+@media (min-width: 1024px) {
+    .home-hero.product-banner {
+        height: 31rem;
+        min-height: 31rem;
+        grid-template-columns: minmax(24rem, 42%) minmax(0, 58%);
+        align-items: center;
+    }
+
+    .home-hero .product-banner-copy {
+        min-height: 0;
+        padding: 4rem;
+    }
+
+    .home-hero .product-banner-visual {
+        align-self: center;
+        height: 31rem;
+        min-height: 31rem;
+        overflow: hidden;
+        background: transparent;
+    }
+
+    .home-hero .product-banner-visual::before {
+        display: none;
+    }
+
+    .home-hero .product-banner-visual img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        object-position: center;
+    }
+}
+
+/* Storefront footer */
+.site-footer {
+    margin: 0.5rem;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: radial-gradient(ellipse at 20% 0%, #171a18 0%, #101010 55%, #0b0d0c 100%);
+    color: #fff;
+}
+
+.site-footer-main {
+    display: grid;
+    gap: 1.5rem;
+    padding: 1.75rem 1.5rem;
+}
+
+.site-footer-brand,
+.site-footer-column {
+    min-width: 0;
+}
+
+.site-footer-logo-crop {
+    display: block;
+    width: 9.6rem;
+    height: auto;
+}
+
+.site-footer-logo-crop img {
+    display: block;
+    width: 9.6rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.site-footer-tagline {
+    margin-top: 0.35rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.site-footer-accent {
+    display: block;
+    width: 2.6rem;
+    height: 0.2rem;
+    margin: 0.55rem 0 0.75rem;
+    border-radius: 999px;
+    background: #55d400;
+}
+
+.site-footer-description {
+    max-width: 24rem;
+    color: rgb(255 255 255 / 82%);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.site-footer-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+}
+
+.site-footer-benefits span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.site-footer-benefits i {
+    display: grid;
+    flex: 0 0 auto;
+    width: 1.8rem;
+    height: 1.8rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #4fc900;
+    color: #071000;
+    font-style: normal;
+    font-size: 0.85rem;
+}
+
+.site-footer-benefits svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+.site-footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.site-footer-column h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 750;
+}
+
+.site-footer-column .site-footer-accent {
+    margin: -0.35rem 0 0.2rem;
+}
+
+.site-footer-column > a,
+.site-footer-contact p {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0;
+    color: rgb(255 255 255 / 88%);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    text-decoration: none;
+}
+
+.site-footer-column > a:hover,
+.site-footer-bottom a:hover {
+    color: #6de21c;
+}
+
+.site-footer-contact i {
+    display: grid;
+    flex: 0 0 auto;
+    width: 1.65rem;
+    height: 1.65rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #4fc900;
+    color: #071000;
+    font-style: normal;
+    font-size: 0.8rem;
+}
+
+.site-footer-social-links {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+}
+
+.site-footer-social-links a {
+    display: grid;
+    width: 2.2rem;
+    height: 2.2rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1.5px solid #55d400;
+    border-radius: 50%;
+    color: #fff;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.site-footer-social-links a:hover {
+    background: #55d400;
+    color: #101010;
+}
+
+.site-footer-social-links svg {
+    width: 0.95rem;
+    height: 0.95rem;
+}
+
+.site-footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 3.1rem;
+    padding: 0.6rem 1.5rem;
+    border-top: 1px solid #55d400;
+    font-size: 0.85rem;
+}
+
+.site-footer-bottom p {
+    margin: 0;
+}
+
+.site-footer-bottom strong {
+    color: #f20d1c;
+}
+
+.site-footer-bottom nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.site-footer-bottom a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .site-footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem 1.5rem;
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .site-footer-main {
+        grid-template-columns: minmax(19rem, 1.55fr) repeat(3, minmax(8rem, 0.9fr)) minmax(12rem, 1.1fr);
+        gap: 1.5rem;
+        padding: 1.6rem 2.25rem;
+    }
+
+    .site-footer-column:not(:last-child) {
+        position: relative;
+    }
+
+    .site-footer-column:not(:last-child)::after {
+        position: absolute;
+        top: 0;
+        right: -0.75rem;
+        height: 100%;
+        border-right: 1px solid rgb(255 255 255 / 13%);
+        content: '';
+    }
+
+    .site-footer-bottom {
+        padding-right: 2.25rem;
+        padding-left: 2.25rem;
+    }
+
+    .site-footer-bottom-rule {
+        display: flex;
+        width: min(20vw, 18rem);
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .site-footer-bottom-rule::before,
+    .site-footer-bottom-rule::after {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, transparent, #55d400);
+        content: '';
+    }
+
+    .site-footer-bottom-rule::after {
+        transform: rotate(180deg);
+    }
+
+    .site-footer-bottom-rule svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        fill: #55d400;
+        stroke: #55d400;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.5;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-footer {
+        margin: 0.25rem;
+        border-radius: 1rem;
+    }
+
+    .site-footer-main {
+        padding: 1.5rem 1rem;
+    }
+
+    .site-footer-bottom {
+        padding: 0.75rem 1rem;
+    }
 }

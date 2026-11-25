@@ -3,11 +3,11 @@
 @section('title', 'Enquiries | Sweat Nothing')
 
 @section('content')
-    <main class="mx-auto max-w-[1500px] p-5 lg:p-7">
-        <section class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+    <main class="enquiries-dashboard mx-auto max-w-[1500px] p-5 lg:p-7">
+        <section class="enquiries-page-head flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-                <h1 class="text-2xl font-bold tracking-[-.03em]">Enquiries</h1>
-                <p class="mt-1 text-slate-500">Website contact form messages appear here automatically.</p>
+                <h1 class="enquiries-title">Enquiries</h1>
+                <p class="enquiries-subtitle mt-1 text-slate-500">Website contact form messages appear here automatically.</p>
             </div>
             <nav class="flex items-center gap-2 text-sm text-slate-500" aria-label="Breadcrumb"><a
                     href="{{ route('dashboard') }}" class="hover:text-black">Dashboard</a><span>›</span><span>Enquiries</span>
@@ -15,16 +15,25 @@
         </section>
         {{-- Page heading section ends here. --}}
 
-        <section class="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <section class="enquiry-stats-grid mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             @foreach ([['Total Enquiries', $enquiryStats['total'], '✉', '#fff3cf'], ['New Enquiries', $enquiryStats['new'], '✉', '#e2efff'], ['Responded', $enquiryStats['responded'], '✓', '#dff7e6'], ['Pending', $enquiryStats['pending'], '◷', '#ffe3e3']] as [$label, $count, $icon, $color])
-                <article class="rounded-xl bg-white p-5 shadow-sm">
+                <article class="enquiry-stat-card rounded-xl bg-white p-5 shadow-sm">
                     <div class="flex items-center gap-4"><span
-                            class="grid h-14 w-14 place-items-center rounded-full text-2xl"
-                            style="background-color: {{ $color }}">{{ $icon }}</span>
+                            class="enquiry-stat-icon grid h-14 w-14 place-items-center rounded-full text-2xl"
+                            style="background-color: {{ $color }}">@if ($label === 'Total Enquiries')
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16l2 10v5H2v-5L4 4Z"/><path d="M2 14h6l2 3h4l2-3h6"/></svg>
+                        @elseif ($label === 'New Enquiries')
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/><path d="M18 2v4m-2-2h4"/></svg>
+                        @elseif ($label === 'Responded')
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg>
+                        @else
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                        @endif
+                    </span>
                         <div>
-                            <p class="text-xs text-slate-500">{{ $label }}</p>
-                            <p class="mt-1 text-2xl font-bold">{{ $count }}</p>
-                            <p class="mt-1 text-xs text-slate-500">From website contact form</p>
+                            <p class="enquiry-stat-label text-xs text-slate-500">{{ $label }}</p>
+                            <p class="enquiry-stat-count mt-1 text-2xl font-bold">{{ $count }}</p>
+                            <p class="enquiry-stat-caption mt-1 text-xs text-slate-500">From website contact form</p>
                         </div>
                     </div>
                 </article>
@@ -36,38 +45,38 @@
             <p class="mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">{{ session('success') }}</p>
         @endif
 
-        <section class="mt-5 rounded-xl bg-white p-4 shadow-sm lg:p-5">
+        <section class="enquiry-filter-panel mt-5 rounded-xl bg-white p-4 shadow-sm lg:p-5">
             <form method="GET" action="{{ route('dashboard.enquiries') }}"
-                class="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+                class="enquiry-filter-form flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                 <div class="grid gap-3 sm:grid-cols-3">
                     <select name="status"
-                        class="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none">
+                        class="enquiry-filter-control rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none">
                         <option value="">All Status</option>
                         @foreach (['new' => 'New', 'responded' => 'Responded', 'pending' => 'Pending'] as $value => $label)
                             <option value="{{ $value }}" @selected(request('status') === $value)>{{ $label }}</option>
                         @endforeach
                     </select>
                     <select name="subject"
-                        class="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none">
+                        class="enquiry-filter-control rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none">
                         <option value="">All Enquiry Types</option>
                         @foreach ($subjects as $subject)
                             <option value="{{ $subject }}" @selected(request('subject') === $subject)>{{ $subject }}</option>
                         @endforeach
                     </select>
                     <input name="date" value="{{ request('date') }}"
-                        class="rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none" type="date"
+                        class="enquiry-filter-control rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none" type="date"
                         aria-label="Select enquiry date">
                 </div>
                 <div class="flex gap-3"><button
-                        class="rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium hover:bg-slate-50">Filter</button><a
+                        class="enquiry-filter-submit rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium hover:bg-slate-50">Filter</button><a
                         href="{{ route('contact') }}"
-                        class="rounded-lg bg-[#111111] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-black/80">+
+                        class="enquiry-add-button rounded-lg bg-[#111111] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-black/80">+
                         Add Enquiry</a></div>
             </form>
         </section>
         {{-- Filter controls section ends here. --}}
 
-        <section class="mt-4 overflow-hidden rounded-xl bg-white shadow-sm">
+        <section class="enquiry-table-card mt-4 overflow-hidden rounded-xl bg-white shadow-sm">
             <div class="space-y-3 p-3 sm:hidden">
                 @forelse ($enquiries as $enquiry)
                     @php($statusStyles = ['new' => 'bg-blue-100 text-blue-700', 'responded' => 'bg-emerald-100 text-emerald-700', 'pending' => 'bg-amber-100 text-amber-700'])
@@ -102,12 +111,12 @@
                         </form>
                     </article>
                 @empty
-                    <p class="py-10 text-center text-sm text-slate-500">No enquiries received yet.</p>
+                    <div class="enquiry-empty-state py-8"><span class="enquiry-empty-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="7" y="11" width="34" height="26" rx="5"/><path d="m9 15 15 11 15-11"/><path d="M16 6h16"/></svg></span><strong>No enquiries yet</strong><span>Website contact form messages will appear here automatically.</span></div>
                 @endforelse
             </div>
 
             <div class="hidden overflow-x-auto sm:block">
-                <table class="min-w-[1150px] w-full text-left text-sm">
+                <table class="enquiry-table min-w-[1150px] w-full text-left text-sm">
                     <thead class="bg-[#f5f7f9] text-xs font-semibold text-slate-800">
                         <tr>
                             <th class="px-4 py-3">#</th>
@@ -152,8 +161,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="8" class="px-4 py-12 text-center text-slate-500">No enquiries received yet.
-                                </td>
+                                <td colspan="8" class="px-4 py-5"><div class="enquiry-empty-state"><span class="enquiry-empty-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><rect x="7" y="11" width="34" height="26" rx="5"/><path d="m9 15 15 11 15-11"/><path d="M16 6h16"/></svg></span><strong>No enquiries yet</strong><span>Website contact form messages will appear here automatically.</span></div></td>
                             </tr>
                         @endforelse
                     </tbody>

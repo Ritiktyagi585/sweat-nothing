@@ -3,11 +3,11 @@
 @section('title', 'Products | Sweat Nothing')
 
 @section('content')
-    <main class="mx-auto max-w-[1500px] p-5 lg:p-7">
-        <section class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+    <main class="products-dashboard mx-auto max-w-[1500px] p-5 lg:p-7">
+        <section class="products-page-head flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-                <h1 class="text-2xl font-bold tracking-[-.03em]">Products</h1>
-                <p class="mt-1 text-slate-500">Manage your store products. Add, edit or remove products.</p>
+                <h1 class="products-title">Products</h1>
+                <p class="products-subtitle mt-1 text-slate-500">Manage your store products. Add, edit or remove products.</p>
             </div>
             <nav class="flex items-center gap-2 text-sm text-slate-500" aria-label="Breadcrumb"><a
                     href="{{ route('dashboard') }}"
@@ -15,87 +15,72 @@
         </section>
         {{-- Page heading section ends here. --}}
 
-        <section class="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <article class="rounded-xl bg-white p-5 shadow-sm">
-                <div class="flex items-center gap-4"><span
-                        class="grid h-14 w-14 place-items-center rounded-full bg-[#fff3cf] text-2xl">&#9632;</span>
+        <section class="product-stats-grid mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <article class="product-stat-card rounded-xl bg-white p-4">
+                <div class="flex items-center gap-4"><span class="product-stat-icon bg-[#fff3cf]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 8.5 4.5v9L12 21l-8.5-4.5v-9L12 3Z"/><path d="m3.8 7.7 8.2 4.5 8.2-4.5M12 12.2V21"/></svg></span>
                     <div>
-                        <p class="text-xs text-slate-500">Total Products</p>
-                        <p class="mt-1 text-2xl font-bold">{{ $products->count() }}</p>
-                        <p class="mt-1 text-xs text-emerald-600">Saved in database</p>
+                        <p class="product-stat-label">Total Products</p>
+                        <p class="product-stat-count">{{ $products->count() }}</p>
+                        <p class="product-stat-caption text-emerald-600">Saved in database</p>
                     </div>
                 </div>
             </article>
-            <article class="rounded-xl bg-white p-5 shadow-sm">
-                <div class="flex items-center gap-4"><span
-                        class="grid h-14 w-14 place-items-center rounded-full bg-[#dff7e6] text-2xl">&#9633;</span>
+            <article class="product-stat-card rounded-xl bg-white p-4">
+                <div class="flex items-center gap-4"><span class="product-stat-icon bg-[#dff7e6]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg></span>
                     <div>
-                        <p class="text-xs text-slate-500">Active Products</p>
-                        <p class="mt-1 text-2xl font-bold">{{ $products->where('status', true)->count() }}</p>
-                        <p class="mt-1 text-xs text-emerald-600">Currently active</p>
+                        <p class="product-stat-label">Active Products</p>
+                        <p class="product-stat-count">{{ $products->where('status', true)->count() }}</p>
+                        <p class="product-stat-caption text-emerald-600">Currently active</p>
                     </div>
                 </div>
             </article>
-            <article class="rounded-xl bg-white p-5 shadow-sm">
-                <div class="flex items-center gap-4"><span
-                        class="grid h-14 w-14 place-items-center rounded-full bg-[#ffe3e3] text-2xl">&#8855;</span>
+            <article class="product-stat-card rounded-xl bg-white p-4">
+                <div class="flex items-center gap-4"><span class="product-stat-icon bg-[#e2efff]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m12 3 9 9-9 9-9-9 9-9Z"/><path d="M12 8v8m-4-4h8"/></svg></span>
                     <div>
-                        <p class="text-xs text-slate-500">Out of Stock</p>
-                        <p class="mt-1 text-2xl font-bold">{{ $products->where('stock', 0)->count() }}</p>
-                        <p class="mt-1 text-xs text-red-600">Needs restocking</p>
-                    </div>
-                </div>
-            </article>
-            <article class="rounded-xl bg-white p-5 shadow-sm">
-                <div class="flex items-center gap-4"><span
-                        class="grid h-14 w-14 place-items-center rounded-full bg-[#e2efff] text-2xl">&#9671;</span>
-                    <div>
-                        <p class="text-xs text-slate-500">Categories</p>
-                        <p class="mt-1 text-2xl font-bold">{{ $products->pluck('category')->filter()->unique()->count() }}
+                        <p class="product-stat-label">Categories</p>
+                        <p class="product-stat-count">{{ $products->pluck('category')->filter()->unique()->count() }}
                         </p>
-                        <p class="mt-1 text-xs text-emerald-600">Available categories</p>
+                        <p class="product-stat-caption text-emerald-600">Available categories</p>
                     </div>
                 </div>
             </article>
         </section>
         {{-- Product statistic cards section ends here. --}}
 
-        <section class="mt-5 rounded-xl bg-white p-4 shadow-sm lg:p-5">
+        <section class="product-filter-panel mt-5 rounded-xl bg-white p-4 shadow-sm lg:p-5">
             @if (session('success'))
                 <p class="mb-4 rounded-lg bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
                     {{ session('success') }}
                 </p>
             @endif
 
-            <div class="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
-                <div class="grid gap-3 sm:grid-cols-3">
-                    <select class="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none">
+            <div class="product-filter-row flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+                <div class="product-filter-controls grid gap-3 sm:grid-cols-3">
+                    <select class="product-filter-control rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none">
                         <option>All Categories</option>
                         <option>Hoodies</option>
                         <option>T-Shirts</option>
                         <option>Accessories</option>
                     </select>
-                    <select class="rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none">
+                    <select class="product-filter-control rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none">
                         <option>All Status</option>
                         <option>Active</option>
-                        <option>Out of Stock</option>
-                        <option>Low Stock</option>
                     </select>
                     <label
-                        class="flex items-center gap-2 rounded-lg bg-[#f5f7f9] px-3 py-2.5 text-sm text-slate-500"><span>&#9906;</span><input
+                        class="product-search flex items-center gap-2 rounded-lg bg-[#f5f7f9] px-3 py-2.5 text-sm text-slate-500"><span>&#9906;</span><input
                             class="w-full bg-transparent outline-none" type="search"
                             placeholder="Search products..."></label>
                 </div>
 
                 <a href="{{ route('admin.products.create') }}"
-                    class="rounded-lg bg-[#ffd400] px-4 py-2.5 text-sm font-medium text-black transition hover:bg-[#e9c300]">
+                    class="product-add-button rounded-lg bg-[#ffd400] px-4 py-2.5 text-sm font-medium text-black transition hover:bg-[#e9c300]">
                     + Add Product
                 </a>
             </div>
         </section>
         {{-- Product filter controls section ends here. --}}
 
-        <section class="mt-4 overflow-hidden rounded-xl bg-white shadow-sm">
+        <section class="product-table-card mt-4 overflow-hidden rounded-xl bg-white shadow-sm">
             <div class="space-y-3 p-3 sm:hidden">
                 @forelse ($products as $index => $product)
                     <article class="rounded-lg border border-slate-100 p-4">
@@ -119,7 +104,6 @@
                                 <p class="mt-2 text-xs text-slate-500">{{ $product->category ?: 'Uncategorised' }}</p>
                                 <div class="mt-2 flex items-center justify-between gap-3">
                                     <p class="font-semibold">₹{{ number_format((float) $product->price, 2) }}</p>
-                                    <p class="text-sm text-slate-600">Stock: {{ $product->stock }}</p>
                                 </div>
                             </div>
                         </div>
@@ -138,13 +122,12 @@
                         </div>
                     </article>
                 @empty
-                    <p class="py-10 text-center text-sm text-slate-500">No products added yet. Click “Add Product” to create
-                        your first product.</p>
+                    <div class="product-empty-state"><span class="product-empty-icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m12 14 12-7 12 7v20l-12 7-12-7V14Z"/><path d="m12 14 12 7 12-7M24 21v20"/></svg></span><strong>No products yet</strong><span>No products are available. Add your first product to get started.</span></div>
                 @endforelse
             </div>
 
             <div class="hidden overflow-x-auto sm:block">
-                <table class="min-w-[1100px] w-full text-left text-sm">
+                <table class="product-table min-w-[1100px] w-full text-left text-sm">
                     <thead class="bg-[#f5f7f9] text-xs font-semibold text-slate-800">
                         <tr>
                             <th class="px-4 py-3"><input type="checkbox" aria-label="Select all products"></th>
@@ -154,7 +137,6 @@
                             <th class="px-4 py-3">SKU</th>
                             <th class="px-4 py-3">Category</th>
                             <th class="px-4 py-3">Price</th>
-                            <th class="px-4 py-3">Stock</th>
                             <th class="px-4 py-3">Status</th>
                             <th class="px-4 py-3">Action</th>
                         </tr>
@@ -177,7 +159,6 @@
                                 <td class="px-4 py-3 text-slate-500">{{ $product->sku }}</td>
                                 <td class="px-4 py-3 text-slate-500">{{ $product->category }}</td>
                                 <td class="px-4 py-3 font-semibold">₹ {{ number_format((float) $product->price, 2) }}</td>
-                                <td class="px-4 py-3">{{ $product->stock }}</td>
                                 <td class="px-4 py-3">
                                     <span
                                         class="rounded-md px-3 py-2 text-xs font-medium {{ $product->status ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600' }}">
@@ -211,16 +192,14 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="10" class="px-4 py-10 text-center text-slate-500">
-                                    No products added yet. Click “Add Product” to create your first product.
-                                </td>
+                                <td colspan="9" class="px-4 py-3"><div class="product-empty-state"><span class="product-empty-icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m12 14 12-7 12 7v20l-12 7-12-7V14Z"/><path d="m12 14 12 7 12-7M24 21v20"/></svg></span><strong>No products yet</strong><span>No products are available. Add your first product to get started.</span></div></td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div>
 
-            <div class="border-t border-slate-100 px-4 py-4 text-sm text-slate-500">
+            <div class="product-table-footer border-t border-slate-100 px-4 py-3 text-sm text-slate-500">
                 Showing {{ $products->count() }} {{ $products->count() === 1 ? 'product' : 'products' }} from the database
             </div>
         </section>

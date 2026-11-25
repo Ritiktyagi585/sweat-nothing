@@ -124,8 +124,7 @@
                                             class="ml-2 text-sm font-normal text-black/40 line-through">₹{{ number_format((float) $product->price, 0) }}</span>
                                     @endif
                                 </p>
-                                <p class="mt-2 text-sm text-[#f6bb00]">★★★★★ <span class="text-black/60">In stock:
-                                        {{ $product->stock }}</span></p>
+                                <p class="mt-2 text-sm text-[#f6bb00]" aria-label="Rated five out of five">★★★★★</p>
                                 <form action="{{ route('cart.store', $product) }}" method="POST">
                                     @csrf
                                     <button

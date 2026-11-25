@@ -85,13 +85,15 @@
                 @enderror
                 <button type="submit" class="mt-5 w-full rounded-full bg-[#ffd100] py-4 font-bold">Send Message →</button>
             </form>
-            <div class="contact-details-card rounded-3xl bg-[#fff1c5] p-7">
+            <div id="customer-details" class="contact-details-card scroll-mt-24 rounded-3xl bg-[#fff1c5] p-7" tabindex="-1">
                 <h2 class="text-2xl font-black">Our Contact Details</h2>
                 <p class="mt-1 text-sm">Reach us through any of the following channels.</p>
                 <div class="contact-details-list mt-7 space-y-5">
-                    <p><b>☎ Call Us</b><br>+91 20 456 7890<br><span class="text-sm text-black/60">Mon – Fri, 10:00 AM – 6:00
+                    <p><b>☎ Call Us</b><br>+
++91 9911916600<br><span class="text-sm text-black/60">Mon – Fri, 10:00 AM – 6:00
                             PM</span></p>
-                    <p><b>✉ Email Us</b><br>hello@sweatnothing.in<br><span class="text-sm text-black/60">We'll get back to
+                    <p><b>✉ Email Us</b><br>
+ayurth0@gmail.com<br><span class="text-sm text-black/60">We'll get back to
                             you within 24 hours.</span></p>
                     <p><b>◷ Business Hours</b><br>Monday – Friday: 10:00 AM – 6:00 PM<br>Saturday: 10:00 AM – 2:00 PM</p>
                 </div>
@@ -154,13 +156,21 @@
             const faqButton = document.getElementById('visit-faqs');
             const faqSection = document.getElementById('faqs');
 
-            faqButton?.addEventListener('click', () => {
+            const showFaqs = () => {
+                if (!faqSection) {
+                    return;
+                }
+
                 faqSection.hidden = false;
-                faqButton.setAttribute('aria-expanded', 'true');
-                faqSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+                faqButton?.setAttribute('aria-expanded', 'true');
+                faqSection.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            faqButton?.addEventListener('click', showFaqs);
+
+            if (window.location.hash === '#faqs') {
+                showFaqs();
+            }
         });
     </script>
 @endsection

@@ -36,6 +36,9 @@ Route::get('/about-us', function () {
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::view('/privacy-policy', 'frontend.privacy-policy')->name('privacy-policy');
+Route::view('/terms-and-conditions', 'frontend.terms-and-conditions')->name('terms-and-conditions');
+Route::view('/support', 'frontend.support')->name('support');
 
 Route::get('/dashboard/login', [DashboardLoginController::class, 'create'])->middleware('guest')->name('login');
 Route::post('/dashboard/login', [DashboardLoginController::class, 'store'])->middleware(['guest', 'throttle:dashboard-login'])->name('dashboard.login.store');

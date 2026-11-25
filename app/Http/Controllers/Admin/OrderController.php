@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateOrderStatusRequest;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class OrderController extends Controller
@@ -13,19 +14,23 @@ class OrderController extends Controller
     /**
      * Display orders received from the website checkout.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
         $orders = Order::query()
+            ->when($request->filled('status'), fn ($query) => $query->where('order_status', $request->string('status')->toString()))
+            ->when($request->filled('payment'), fn ($query) => $query->where('payment_status', $request->string('payment')->toString()))
+            ->when($request->filled('date'), fn ($query) => $query->whereDate('created_at', $request->date('date')))
             ->with('items:id,order_id,product_name,quantity')
             ->withCount('items')
             ->latest()
-            ->get();
+            ->paginate(10)
+            ->withQueryString();
 
         $orderStats = [
-            'total' => $orders->count(),
-            'pending' => $orders->where('order_status', 'pending')->count(),
-            'cod' => $orders->where('payment_method', 'cod')->count(),
-            'revenue' => $orders->sum('total'),
+            'total' => Order::count(),
+            'pending' => Order::where('order_status', 'pending')->count(),
+            'cod' => Order::where('payment_method', 'cod')->count(),
+            'revenue' => Order::sum('total'),
         ];
 
         return view('orders.index', compact('orders', 'orderStats'));
